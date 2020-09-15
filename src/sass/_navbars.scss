@@ -1,0 +1,106 @@
+.FirstNavbar {
+  background: #b82124;
+
+  .Navbar-wrapper {
+    max-width: 1350px;
+    margin: 0 auto;
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      // height: 5vh;
+      padding: 1.1rem 0.5rem;
+
+      .Links {
+        display: flex;
+        justify-content: space-between;
+
+        a {
+          font-size: 1.1rem;
+          text-transform: capitalize;
+          color: white;
+        }
+
+        width: 600px;
+        .locations {
+          h3 {
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            font-weight: 800;
+          }
+        }
+      }
+      .box {
+        text-transform: uppercase;
+        color: white;
+        font-weight: 800;
+      }
+    }
+  }
+}
+
+// second navbar
+
+.SecondNavbar {
+  border-bottom: 1px solid rgb(199, 198, 198);
+
+  .Navbar-wrapper {
+    max-width: 1350px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0.5rem;
+
+    nav {
+      display: flex;
+
+      .btns {
+        button {
+          color: #c62829;
+          padding: 0.3rem 2rem;
+          font-size: 1.4rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          border: none;
+          outline: none;
+          background: none;
+          margin-right: 2px;
+        }
+        .inner-btn {
+          font-weight: normal;
+          font-size: 0.9rem;
+          text-transform: none;
+          padding-top: 0.2rem;
+          color: #333;
+        }
+
+        .delivery {
+          border-right: 1px solid rgb(199, 198, 198);
+        }
+        .login {
+          border-right: 1px solid rgb(199, 198, 198);
+          border-left: 1px solid rgb(199, 198, 198);
+        }
+        .checkout {
+          border-left: 1px solid rgb(199, 198, 198);
+          //  border-right: none;
+        }
+
+        span {
+          display: block;
+        }
+      }
+      .btn-checkout {
+        button {
+          padding-right: 0;
+          .cart {
+            display: inline-block;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}
