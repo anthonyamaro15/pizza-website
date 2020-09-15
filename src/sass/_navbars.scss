@@ -1,5 +1,6 @@
 .FirstNavbar {
   background: #b82124;
+  background: linear-gradient(#cf2b2e, #b82124);
 
   .Navbar-wrapper {
     max-width: 1350px;
@@ -9,7 +10,7 @@
       display: flex;
       justify-content: space-between;
       // height: 5vh;
-      padding: 1.1rem 0.5rem;
+      padding: 1rem 0.5rem;
 
       .Links {
         display: flex;
@@ -42,16 +43,15 @@
 // second navbar
 
 .SecondNavbar {
-  border-bottom: 1px solid rgb(199, 198, 198);
-
   .Navbar-wrapper {
     max-width: 1350px;
     margin: 0 auto;
+    border-bottom: 1px solid rgb(199, 198, 198);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 0.5rem;
+    padding: 1.6rem 0.5rem;
 
     nav {
       display: flex;
@@ -90,6 +90,8 @@
 
         span {
           display: block;
+          font-family: "Quicksand", sans-serif;
+          font-weight: 300;
         }
       }
       .btn-checkout {
@@ -102,5 +104,27 @@
         }
       }
     }
+  }
+}
+
+.NavRoutes {
+  border-bottom: 1px solid rgb(199, 198, 198);
+  padding: 0 0.5rem;
+  max-width: 1350px;
+  margin: 0 auto;
+
+  nav {
+    a {
+      margin-right: 1rem;
+      text-transform: capitalize;
+      font-weight: bold;
+      color: #333;
+      padding: 1.4rem 0.2rem;
+    }
+  }
+  .active {
+    color: #c62829;
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
   }
 }
