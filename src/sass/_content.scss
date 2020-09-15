@@ -1,0 +1,116 @@
+.Content {
+  .Content-inner {
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+
+    h1 {
+      text-transform: uppercase;
+      margin: 3rem 0 1rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      font-size: 2.2rem;
+      color: #aaa;
+    }
+
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+}
+
+.SingleCardComponent {
+  border: 1px solid rgb(199, 198, 198);
+  max-width: 300px;
+  background: white;
+  margin-bottom: 1rem;
+
+  .img-wrapper {
+    //  width: 300px;
+    height: 230px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .space-between {
+    //  border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    //  align-content: space-between;
+  }
+
+  .item-information {
+    //  border: 1px solid red;
+
+    padding: 1rem;
+    h3 {
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+      font-weight: 900;
+    }
+    p {
+      font-family: "Quicksand", sans-serif;
+      font-weight: 300;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+  }
+
+  .lower-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 1rem;
+    //  border: 1px solid red;
+    .btn {
+      padding: 0.5rem 1rem;
+      // font-weight: bold;
+      border-radius: 30px;
+      background-color: #3396a9;
+
+      border: none;
+      outline: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+
+      span {
+        background: white;
+        color: #333;
+        border-radius: 50%;
+        margin-left: 0.5rem;
+        margin-right: -0.5rem;
+        font-size: 1rem;
+        padding: 0.3rem 0.3rem 0;
+        font-weight: bold;
+      }
+    }
+
+    .add-to-cart {
+      display: flex;
+      justify-content: flex-end;
+
+      label {
+        display: block;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+
+        select {
+          padding: 0.3rem;
+          outline: none;
+          background: rgb(230, 228, 228);
+          border: 1px solid rgb(196, 192, 192);
+          margin-left: 0.3rem;
+        }
+      }
+    }
+  }
+}
