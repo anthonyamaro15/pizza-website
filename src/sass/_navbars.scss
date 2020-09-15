@@ -20,14 +20,20 @@
           font-size: 1.1rem;
           text-transform: capitalize;
           color: white;
+          font-family: "Quicksand", sans-serif;
+          font-weight: 300;
         }
 
         width: 600px;
         .locations {
-          h3 {
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            font-weight: 800;
+          font-family: "Nanum Gothic", sans-serif;
+
+          a {
+            h3 {
+              text-transform: uppercase;
+              font-size: 1.1rem;
+              //   font-weight: 900;
+            }
           }
         }
       }
@@ -111,7 +117,7 @@
   border-bottom: 1px solid rgb(199, 198, 198);
   padding: 0 0.5rem;
   max-width: 1350px;
-  margin: 0 auto;
+  margin: 0 auto 3rem;
 
   nav {
     a {
@@ -119,7 +125,8 @@
       text-transform: capitalize;
       font-weight: bold;
       color: #333;
-      padding: 1.4rem 0.2rem;
+      padding: 1.4rem 0.4rem;
+      // letter-spacing: 1.2;
     }
   }
   .active {
