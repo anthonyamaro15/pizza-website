@@ -12,6 +12,10 @@ const LoginModal = () => {
     setOpen(false);
   };
 
+  const forgotPassword = () => {
+    history.push("/reset_password");
+    setOpen(false);
+  };
   return (
     <>
       <button className="login" onClick={() => setOpen(true)}>
@@ -38,7 +42,9 @@ const LoginModal = () => {
               </label>
 
               <button>sign in</button>
-              <span className="forgot-pass">Forgot your password?</span>
+              <span className="forgot-pass" onClick={forgotPassword}>
+                Forgot your password?
+              </span>
             </form>
           </div>
           <div className="SignUpForm">
