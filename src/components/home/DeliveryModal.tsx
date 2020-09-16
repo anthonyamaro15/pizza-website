@@ -11,23 +11,10 @@ const DeliveryModal = () => {
         <span className="inner-btn">2150 South Canalport Avenue...</span>
       </button>
       <Modal open={open} onClose={() => setOpen(false)}>
-        <h2>Try tabbing/shift-tabbing thru elements</h2>
-        <form action="">
-          <p>
-            <label htmlFor="firstName">
-              First name
-              <input type="text" />
-            </label>
-          </p>
-          <p>
-            <label htmlFor="lastName">
-              Last name
-              <input type="text" />
-            </label>
-          </p>
-          <button>test</button>
-          <input type="submit" value="Submit" />
-        </form>
+        <div className="DeliveryModal">
+          <h3>delivered to</h3>
+          <p>2150 South Canalport Avenue Chicago, IL. 60608</p>
+        </div>
       </Modal>
     </>
   );

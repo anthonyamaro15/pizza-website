@@ -6,6 +6,7 @@ import Footer from "./home/Footer";
 import NavRoutes from "./home/NavRoutes";
 import SecondNavbar from "./home/SecondNavbar";
 import SignUp from "./home/SignUp";
+import ForgotPassword from "./home/ForgotPassword";
 
 const MainApp = () => {
   return (
@@ -19,6 +20,9 @@ const MainApp = () => {
       </Route>
       <Route path="/new" exact>
         <SignUp />
+      </Route>
+      <Route path="/reset_password" exact>
+        <ForgotPassword />
       </Route>
 
       <Footer />
