@@ -1,0 +1,209 @@
+.modal-wrapper {
+  width: 750px;
+  padding: 2rem;
+
+  .items-in-cart {
+    margin-bottom: 1.5rem;
+
+    .item-desc {
+      display: flex;
+      justify-content: space-between;
+
+      .img-wrapper {
+        display: flex;
+
+        img {
+          width: 100px;
+          height: 70px;
+        }
+
+        .item-name {
+          margin-left: 1rem;
+          p {
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 900;
+
+            span {
+              font-weight: normal;
+              text-transform: none;
+              color: #c62829;
+
+              cursor: pointer;
+            }
+          }
+
+          ul {
+            display: flex;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            li {
+              //   color: red;
+              margin-left: 1rem;
+              margin-right: 0.6rem;
+              //   padding-left: -2rem;
+            }
+          }
+        }
+      }
+
+      .price {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .make-meal-complete {
+    h1 {
+      text-transform: capitalize;
+      margin: 1rem 0 1rem;
+      padding-top: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      font-size: 2.1rem;
+      color: #aaa;
+      border-top: 1px solid rgb(221, 221, 221);
+      text-align: center;
+    }
+  }
+
+  .show-choices {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .total-information {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 1rem;
+
+    p {
+      margin-bottom: 0.7rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+  }
+
+  .checkout-button {
+    margin-top: 2rem;
+    button {
+      padding: 0.5rem 1rem;
+      // font-weight: bold;
+      border-radius: 30px;
+      background-color: #3396a9;
+      background: linear-gradient(135deg, #29a8be 0%, #3495a7 100%);
+
+      border: none;
+      outline: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+
+      span {
+        background: white;
+        color: #333;
+        border-radius: 50%;
+        margin-left: 0.5rem;
+        margin-right: -0.5rem;
+        font-size: 1rem;
+        padding: 0.3rem 0.3rem 0;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.CheckoutCartOptions {
+  border: 1px solid rgb(199, 198, 198);
+  max-width: 230px;
+  background: white;
+  margin-bottom: 1rem;
+
+  .img-wrapper {
+    width: 220px;
+    height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .space-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    //  align-content: space-between;
+  }
+
+  .item-information {
+    //  border: 1px solid red;
+
+    padding: 1rem;
+    h3 {
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+      font-weight: 900;
+    }
+  }
+
+  .lower-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 1rem;
+    //  border: 1px solid red;
+    .btn {
+      padding: 0.5rem 1rem;
+      // font-weight: bold;
+      border-radius: 30px;
+      background-color: #3396a9;
+      background: linear-gradient(135deg, #29a8be 0%, #3495a7 100%);
+
+      border: none;
+      outline: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+
+      span {
+        background: white;
+        color: #333;
+        border-radius: 50%;
+        margin-left: 0.5rem;
+        margin-right: -0.5rem;
+        font-size: 1rem;
+        padding: 0.3rem 0.3rem 0;
+        font-weight: bold;
+      }
+    }
+
+    .add-to-cart {
+      display: flex;
+      justify-content: flex-end;
+
+      label {
+        display: block;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+
+        select {
+          padding: 0.3rem;
+          outline: none;
+          background: rgb(230, 228, 228);
+          border: 1px solid rgb(196, 192, 192);
+          margin-left: 0.3rem;
+        }
+      }
+    }
+  }
+}
