@@ -1,0 +1,77 @@
+.Forms-wrapper {
+  width: 700px;
+  padding: 4rem 2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+
+  h3 {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 900;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 0.9rem;
+    color: #c62829;
+    input {
+      width: 100%;
+      display: block;
+      margin: 0.5rem 0 1rem;
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      border-radius: 30px;
+      border: 1px solid grey;
+      border: none;
+      background: rgb(236, 235, 235);
+      outline: none;
+      box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2) inset;
+    }
+  }
+
+  .LoginForm {
+    width: 45%;
+
+    button {
+      padding: 0.7rem 1.2rem;
+      border-radius: 30px;
+      font-weight: bold;
+      text-transform: capitalize;
+      border: none;
+      background: #c62829;
+      color: white;
+    }
+
+    .forgot-pass {
+      margin-left: 1rem;
+      font-size: 0.9rem;
+      color: #c62829;
+      cursor: pointer;
+    }
+  }
+
+  .SignUpForm {
+    width: 43%;
+
+    span {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .create-account {
+      display: inline-block;
+      padding: 0.7rem 1.2rem;
+      border-radius: 30px;
+      font-weight: bold;
+      text-transform: capitalize;
+      border: none;
+      background: #c62829;
+      color: white;
+      margin-top: 0.3rem;
+      cursor: pointer;
+    }
+  }
+}

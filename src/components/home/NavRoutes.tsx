@@ -5,7 +5,7 @@ const NavRoutes = () => {
   return (
     <div className="NavRoutes">
       <nav>
-        <NavLink to="/pizzas" exact activeClassName="active">
+        <NavLink to="/" exact activeClassName="active">
           pizzas
         </NavLink>
         <NavLink to="/salads" exact activeClassName="active">
