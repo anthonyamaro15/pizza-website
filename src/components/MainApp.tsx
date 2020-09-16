@@ -7,15 +7,22 @@ import NavRoutes from "./home/NavRoutes";
 import SecondNavbar from "./home/SecondNavbar";
 import SignUp from "./home/SignUp";
 import ForgotPassword from "./home/ForgotPassword";
+import HomePage from "./home/homepage/HomePage";
 
 const MainApp = () => {
   return (
     <div>
       <FirstNavbar />
       <SecondNavbar />
-      <NavRoutes />
-
       <Route path="/" exact>
+        <HomePage />
+      </Route>
+
+      <Route path="/:category" exact>
+        <NavRoutes />
+      </Route>
+
+      <Route path="/pizzas" exact>
         <Content />
       </Route>
       <Route path="/new" exact>
