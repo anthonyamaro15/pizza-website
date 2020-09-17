@@ -1,0 +1,101 @@
+.HomeSecondContent {
+  height: 75vh;
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  background: rgba(0, 0, 0, 0.2);
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    background: url("../imgs/bgheader.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    //  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.8) inset;
+
+    z-index: -1;
+  }
+
+  .homeSectionContent-inner {
+    max-width: 850px;
+    margin: auto;
+    //  border: 1px solid red;
+    background: white;
+
+    .border {
+      border: 1px solid rgb(192, 189, 189);
+      margin: 0.8rem;
+      .all-locations {
+        border: 1px solid rgb(212, 214, 212);
+        margin: 4px;
+        text-align: center;
+        padding: 3rem 2rem;
+
+        h3 {
+          text-transform: uppercase;
+          font-size: 1.5rem;
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+        }
+
+        nav {
+          a {
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #c62829;
+          }
+        }
+
+        p {
+          width: 80%;
+          margin: 1.5rem auto 2rem;
+          //  margin-top: 1.5rem;
+          line-height: 1.5;
+        }
+
+        .btn-wrapper {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 3rem;
+          //  text-transform: capitalize;
+          button {
+            text-transform: capitalize;
+
+            padding: 0.5rem 1rem;
+            // font-weight: bold;
+            border-radius: 30px;
+            background-color: #3396a9;
+            background: linear-gradient(135deg, #29a8be 0%, #3495a7 100%);
+            font-weight: bold;
+            border: none;
+            outline: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            cursor: pointer;
+
+            span {
+              background: white;
+              color: #333;
+              border-radius: 50%;
+              margin-left: 1rem;
+              margin-right: -0.5rem;
+              font-size: 1rem;
+              padding: 0.3rem 0.3rem 0;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -7,7 +7,7 @@ const HomeContent = () => {
     <div className="HomeContent">
       <section className="content-wrapper">
         <div className="item-desc">
-          <h3>new! lemon pepper wings</h3>
+          <h1>new! lemon pepper wings</h1>
           <span>Try our new wing flavor, available at all locations!</span>
           <p>
             Enjoy crispy, fried chicken wings tossed in a house made lemon
