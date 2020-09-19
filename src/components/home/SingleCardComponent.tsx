@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import pizza from "../../imgs/pizza.jpg";
 import { useForm } from "react-hook-form";
 import { BsArrowRightShort } from "react-icons/bs";
@@ -8,9 +8,22 @@ interface Inputs {
   quantity: number;
 }
 
-const SingleCardComponent = () => {
+interface Props {
+  open: boolean;
+  openLoginModal: () => void;
+}
+
+const SingleCardComponent: React.FC<Props> = ({ open, openLoginModal }) => {
   const [order, setOrder] = useState(false);
+  const [token, setToken] = useState("");
   const { register, handleSubmit } = useForm<Inputs>();
+
+  useEffect(() => {
+    const getToken = localStorage.getItem("token");
+    if (getToken) {
+      setToken(getToken);
+    }
+  }, []);
 
   const onSubmit = (values: Inputs) => {
     console.log(values);
@@ -19,7 +32,12 @@ const SingleCardComponent = () => {
 
   const handleOrder = () => {
     setOrder(true);
+    if (!token) {
+      openLoginModal();
+      setOrder(false);
+    }
   };
+
   return (
     <div className="SingleCardComponent">
       <div className="img-wrapper">

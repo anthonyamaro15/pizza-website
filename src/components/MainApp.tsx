@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import Content from "./home/Content";
 import FirstNavbar from "./home/FirstNavbar";
@@ -10,10 +10,23 @@ import ForgotPassword from "./home/ForgotPassword";
 import HomePage from "./home/homepage/HomePage";
 
 const MainApp = () => {
+  const [open, setOpen] = useState(false);
+
+  const openLoginLModal = () => {
+    setOpen(true);
+  };
+
+  const closeLoginModal = () => {
+    setOpen(false);
+  };
   return (
     <div>
       <FirstNavbar />
-      <SecondNavbar />
+      <SecondNavbar
+        openLoginModal={openLoginLModal}
+        closeLoginModal={closeLoginModal}
+        open={open}
+      />
       <Route path="/" exact>
         <HomePage />
       </Route>
@@ -23,7 +36,7 @@ const MainApp = () => {
       </Route>
 
       <Route path="/pizzas" exact>
-        <Content />
+        <Content openLoginModal={openLoginLModal} open={open} />
       </Route>
       <Route path="/new" exact>
         <SignUp />
