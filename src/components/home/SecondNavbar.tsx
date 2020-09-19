@@ -5,7 +5,16 @@ import CheckoutCartModal from "./CheckoutCartModal";
 import LoginModal from "./LoginModal";
 import DeliveryModal from "./DeliveryModal";
 
-const SecondNavbar = () => {
+interface Props {
+  open: boolean;
+  openLoginModal: () => void;
+  closeLoginModal: () => void;
+}
+const SecondNavbar: React.FC<Props> = ({
+  open,
+  openLoginModal,
+  closeLoginModal,
+}) => {
   return (
     <div className="SecondNavbar">
       <div className="Navbar-wrapper">
@@ -17,7 +26,11 @@ const SecondNavbar = () => {
             <DeliveryModal />
           </div>
           <div className="btn-login btns">
-            <LoginModal />
+            <LoginModal
+              open={open}
+              openLoginModal={openLoginModal}
+              closeLoginModal={closeLoginModal}
+            />
           </div>
           <div className="btn-checkout btns">
             <CheckoutCartModal />

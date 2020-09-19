@@ -3,25 +3,37 @@ import { useHistory } from "react-router-dom";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
-const LoginModal = () => {
-  const [open, setOpen] = useState(false);
+interface Props {
+  open: boolean;
+  openLoginModal: () => void;
+  closeLoginModal: () => void;
+}
+
+const LoginModal: React.FC<Props> = ({
+  open,
+  openLoginModal,
+  closeLoginModal,
+}) => {
+  //   const [setOpen] = useState(false);
   const history = useHistory();
 
   const redirect = () => {
     history.push("/new");
-    setOpen(false);
+    //  setOpen(false);
+    closeLoginModal();
   };
 
   const forgotPassword = () => {
     history.push("/reset_password");
-    setOpen(false);
+    //  setOpen(false);
+    closeLoginModal();
   };
   return (
     <>
-      <button className="login" onClick={() => setOpen(true)}>
+      <button className="login" onClick={openLoginModal}>
         login <span className="inner-btn">or Create Account</span>
       </button>
-      <Modal open={open} onClose={() => setOpen(false)}>
+      <Modal open={open} onClose={closeLoginModal}>
         <div className="Forms-wrapper">
           <div className="LoginForm">
             <h3>login</h3>
