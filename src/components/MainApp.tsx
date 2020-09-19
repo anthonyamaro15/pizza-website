@@ -9,6 +9,8 @@ import SignUp from "./home/SignUp";
 import ForgotPassword from "./home/ForgotPassword";
 import HomePage from "./home/homepage/HomePage";
 
+import MainAdmin from "./admin/MainAdmin";
+
 const MainApp = () => {
   const [open, setOpen] = useState(false);
 
@@ -43,6 +45,10 @@ const MainApp = () => {
       </Route>
       <Route path="/reset_password" exact>
         <ForgotPassword />
+      </Route>
+
+      <Route exact path="/admin">
+        <MainAdmin />
       </Route>
 
       <Footer />
