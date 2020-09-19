@@ -27,3 +27,9 @@ button {
   cursor: pointer;
   outline: none;
 }
+
+label {
+  input {
+    outline: none;
+  }
+}

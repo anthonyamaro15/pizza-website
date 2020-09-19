@@ -1,9 +1,10 @@
 import React from "react";
+import AdminHomePage from "./AdminHomePage";
 
 const MainAdmin = () => {
   return (
     <div className="MainAdmin">
-      <h3>h3llo</h3>
+      <AdminHomePage />
     </div>
   );
 };
