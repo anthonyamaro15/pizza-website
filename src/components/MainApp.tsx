@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Route } from "react-router-dom";
 import Content from "./home/Content";
 import FirstNavbar from "./home/FirstNavbar";
@@ -13,6 +14,18 @@ import MainAdmin from "./admin/MainAdmin";
 
 const MainApp = () => {
   const [open, setOpen] = useState(false);
+  const [menu, setMenu] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/menu/get_menu`)
+      .then((res) => {
+        setMenu(res.data);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  }, []);
 
   const openLoginLModal = () => {
     setOpen(true);
@@ -37,9 +50,10 @@ const MainApp = () => {
         <NavRoutes />
       </Route>
 
-      <Route path="/pizzas" exact>
-        <Content openLoginModal={openLoginLModal} open={open} />
+      <Route path="/:category" exact>
+        <Content openLoginModal={openLoginLModal} open={open} data={menu} />
       </Route>
+
       <Route path="/new" exact>
         <SignUp />
       </Route>

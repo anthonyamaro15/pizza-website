@@ -8,15 +8,37 @@ interface Inputs {
   quantity: number;
 }
 
+interface ItemInformation {
+  category?: string;
+  category_name?: string;
+  cheese?: string;
+  description?: string;
+  dressing: any;
+  id?: number;
+  name?: string;
+  img_url?: string;
+  peppers?: any;
+  sauce?: any;
+  side?: string;
+  size_price?: any;
+}
+
 interface Props {
   open: boolean;
   openLoginModal: () => void;
+  val: ItemInformation;
 }
 
-const SingleCardComponent: React.FC<Props> = ({ open, openLoginModal }) => {
+const SingleCardComponent: React.FC<Props> = ({
+  open,
+  openLoginModal,
+  val,
+}) => {
   const [order, setOrder] = useState(false);
   const [token, setToken] = useState("");
   const { register, handleSubmit } = useForm<Inputs>();
+
+  //   console.log("from single ", val);
 
   useEffect(() => {
     const getToken = localStorage.getItem("token");
@@ -41,12 +63,12 @@ const SingleCardComponent: React.FC<Props> = ({ open, openLoginModal }) => {
   return (
     <div className="SingleCardComponent">
       <div className="img-wrapper">
-        <img src={pizza} alt="pizza image" />
+        <img src={val?.img_url} alt={val?.name} />
       </div>
       <div className="space-between">
         <div className="item-information">
-          <h3>deep dish cheese</h3>
-          <p>Mozzarella cheese topped with vine-ripened tomato sauce.</p>
+          <h3>{val?.name}</h3>
+          <p>{val?.description}</p>
         </div>
         <div className="lower-content">
           {!order ? (
