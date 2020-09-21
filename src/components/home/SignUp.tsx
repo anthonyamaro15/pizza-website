@@ -35,6 +35,7 @@ const SignUp = () => {
       .post(`${process.env.REACT_APP_API_URL}/api/register`, saveData)
       .then((res) => {
         console.log("response ", res.data);
+        reset();
       })
       .catch((err) => {
         console.log(err.response.data);

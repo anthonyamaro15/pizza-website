@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
+interface User {
+  address: string;
+  first_name: string;
+  last_name: string;
+  id: number;
+  email: string;
+  phone_number: string;
+}
+
 interface Props {
   open: boolean;
   openLoginModal: () => void;
   closeLoginModal: () => void;
+  user: User[];
 }
 
 interface InputValues {
@@ -20,20 +30,19 @@ const LoginModal: React.FC<Props> = ({
   open,
   openLoginModal,
   closeLoginModal,
+  user,
 }) => {
-  //   const [setOpen] = useState(false);
   const { register, handleSubmit, reset } = useForm<InputValues>();
   const history = useHistory();
 
   const redirect = () => {
     history.push("/new");
-    //  setOpen(false);
     closeLoginModal();
   };
 
   const forgotPassword = () => {
     history.push("/reset_password");
-    //  setOpen(false);
+
     closeLoginModal();
   };
 
@@ -45,13 +54,44 @@ const LoginModal: React.FC<Props> = ({
         localStorage.setItem("client_token", JSON.stringify(res.data.token));
         localStorage.setItem("id", JSON.stringify(res.data.id));
         closeLoginModal();
+        window.location.reload(true);
+        reset();
       })
       .catch((err) => {
         console.log(err.response.data);
       });
   };
-  return (
-    <>
+
+  const signOut = () => {
+    closeLoginModal();
+    localStorage.clear();
+    window.location.reload(true);
+  };
+
+  return user.length ? (
+    <div>
+      <button className="login" onClick={openLoginModal}>
+        my account{" "}
+        <span className="inner-btn">{`${user[0].first_name} ${user[0].last_name}`}</span>
+      </button>
+      <Modal open={open} onClose={closeLoginModal}>
+        <div className="logout-wrapper">
+          <div className="Logout">
+            <h3>my account</h3>
+            <div className="user-information">
+              <p>{`${user[0].first_name} ${user[0].last_name}`}</p>
+              <p>{user[0].email}</p>
+              <p>{user[0].phone_number}</p>
+            </div>
+            <div className="logout-btn">
+              <button onClick={signOut}>sign out</button>
+            </div>
+          </div>
+        </div>
+      </Modal>
+    </div>
+  ) : (
+    <div>
       <button className="login" onClick={openLoginModal}>
         login <span className="inner-btn">or Create Account</span>
       </button>
@@ -99,24 +139,10 @@ const LoginModal: React.FC<Props> = ({
                 create account
               </span>
             </div>
-            {/* <form>
-              <label htmlFor="firstName">
-                First name
-                <input type="text" />
-              </label>
-
-              <label htmlFor="lastName">
-                Last name
-                <input type="text" />
-              </label>
-
-              <button>test</button>
-              <input type="submit" value="Submit" />
-            </form> */}
           </div>
         </div>
       </Modal>
-    </>
+    </div>
   );
 };
 
