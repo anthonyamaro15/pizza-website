@@ -1,5 +1,3 @@
-import { Value } from "knex";
-import axios from "axios";
 import React from "react";
 import SingleCardComponent from "./SingleCardComponent";
 import { useParams } from "react-router-dom";
@@ -35,9 +33,15 @@ interface Props {
   open: boolean;
   openLoginModal: () => void;
   data: Values;
+  getItemsInCart: () => void;
 }
 
-const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
+const Content: React.FC<Props> = ({
+  open,
+  openLoginModal,
+  data,
+  getItemsInCart,
+}) => {
   const { category } = useParams<{ category: string }>();
   const {
     appetizers,
@@ -78,6 +82,7 @@ const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
               val={val}
               open={open}
               openLoginModal={openLoginModal}
+              getItemsInCart={getItemsInCart}
             />
           ))}
         </div>
@@ -92,6 +97,7 @@ const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
               val={val}
               open={open}
               openLoginModal={openLoginModal}
+              getItemsInCart={getItemsInCart}
             />
           ))}
         </div>
@@ -106,6 +112,7 @@ const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
               val={val}
               open={open}
               openLoginModal={openLoginModal}
+              getItemsInCart={getItemsInCart}
             />
           ))}
         </div>
@@ -120,6 +127,7 @@ const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
               val={val}
               open={open}
               openLoginModal={openLoginModal}
+              getItemsInCart={getItemsInCart}
             />
           ))}
         </div>
@@ -134,6 +142,7 @@ const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
               val={val}
               open={open}
               openLoginModal={openLoginModal}
+              getItemsInCart={getItemsInCart}
             />
           ))}
         </div>
@@ -150,6 +159,7 @@ const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
                 val={val}
                 open={open}
                 openLoginModal={openLoginModal}
+                getItemsInCart={getItemsInCart}
               />
             ))}
           </div>
@@ -165,6 +175,7 @@ const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
                 val={val}
                 open={open}
                 openLoginModal={openLoginModal}
+                getItemsInCart={getItemsInCart}
               />
             ))}
           </div>
@@ -180,6 +191,7 @@ const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
                 val={val}
                 open={open}
                 openLoginModal={openLoginModal}
+                getItemsInCart={getItemsInCart}
               />
             ))}
           </div>
@@ -195,6 +207,7 @@ const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
                 val={val}
                 open={open}
                 openLoginModal={openLoginModal}
+                getItemsInCart={getItemsInCart}
               />
             ))}
           </div>
@@ -210,6 +223,7 @@ const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
                 val={val}
                 open={open}
                 openLoginModal={openLoginModal}
+                getItemsInCart={getItemsInCart}
               />
             ))}
           </div>
@@ -225,6 +239,7 @@ const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
                 val={val}
                 open={open}
                 openLoginModal={openLoginModal}
+                getItemsInCart={getItemsInCart}
               />
             ))}
           </div>
@@ -240,6 +255,7 @@ const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
                 val={val}
                 open={open}
                 openLoginModal={openLoginModal}
+                getItemsInCart={getItemsInCart}
               />
             ))}
           </div>
@@ -255,6 +271,7 @@ const Content: React.FC<Props> = ({ open, openLoginModal, data }) => {
                 val={val}
                 open={open}
                 openLoginModal={openLoginModal}
+                getItemsInCart={getItemsInCart}
               />
             ))}
           </div>

@@ -1,14 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { ImCart } from "react-icons/im";
-import logo from "../../imgs/logo.png";
 import CheckoutCartOptions from "./CheckoutCartOptions";
 import { BsArrowRightShort } from "react-icons/bs";
+import axios from "axios";
 
-const CheckoutCartModal = () => {
+interface ItemInformation {
+  category: string;
+  category_name: string;
+  cheese: string;
+  description: string;
+  dressing: any;
+  price: number;
+  quantity: number;
+  user_id: number;
+  id: number;
+  name: string;
+  img_url: string;
+  peppers: any;
+  sauce: any;
+  side: string;
+  size_price: any;
+}
+
+interface Props {
+  getItemsInCart: () => void;
+  cartData: ItemInformation[];
+  //   cartData: any;
+}
+
+const CheckoutCartModal: React.FC<Props> = ({ getItemsInCart, cartData }) => {
   const [open, setOpen] = React.useState(false);
   const [itemsInCart] = useState(true);
+  let [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    console.log(cartData);
+    cartData.forEach((item) => setTotal((total += item.price)));
+  }, [cartData]);
+
+  const removeFromCart = (item: ItemInformation) => {
+    axios
+      .delete(`${process.env.REACT_APP_API_URL}/api/cart/remove/${item.id}`)
+      .then((res) => {
+        console.log(res.data);
+        getItemsInCart();
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  };
+
   return (
     <>
       <button className="checkout" onClick={() => setOpen(true)}>
@@ -16,36 +59,40 @@ const CheckoutCartModal = () => {
         <span className="cart">
           <ImCart />
         </span>
-        <span className="inner-btn">total</span>
+        <span className="inner-btn">{`($${total.toFixed(2)})`}</span>
       </button>
       <Modal open={open} onClose={() => setOpen(false)}>
         <div className="modal-wrapper">
           {itemsInCart ? (
             <div className="madal-wrapper-inner">
               <div className="items-in-cart">
-                <div className="item-desc">
-                  <div className="img-wrapper">
-                    <img src={logo} alt="this is whats in your cart" />
+                {cartData.map((items) => (
+                  <div className="item-desc" key={items.id}>
+                    <div className="img-wrapper">
+                      <img src={items.img_url} alt={items.name} />
 
-                    <div className="item-name">
-                      <p>large deep dish cheese</p>
-                      <p className="remove-from-cart">
-                        (<span>remove</span>)
-                      </p>
-                      <ul>
-                        <li>just right</li>
-                        <li>cut</li>
-                      </ul>
+                      <div className="item-name">
+                        <p>{items.name}</p>
+                        <p className="remove-from-cart">
+                          (
+                          <span onClick={() => removeFromCart(items)}>
+                            remove
+                          </span>
+                          )
+                        </p>
+                        <ul>
+                          <li>just right</li>
+                          <li>cut</li>
+                        </ul>
+                      </div>
                     </div>
+                    <span className="price">${items.price}</span>
                   </div>
-                  <span className="price">$23.95</span>
-                </div>
+                ))}
               </div>
               <div className="make-meal-complete">
                 <h1>make your meal complete</h1>
                 <div className="show-choices">
-                  <CheckoutCartOptions />
-                  <CheckoutCartOptions />
                   <CheckoutCartOptions />
                 </div>
               </div>
