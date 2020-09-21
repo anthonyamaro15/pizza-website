@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, SetStateAction } from "react";
 import axios from "axios";
 import { Route } from "react-router-dom";
 import Content from "./home/Content";
@@ -15,6 +15,16 @@ import MainAdmin from "./admin/MainAdmin";
 const MainApp = () => {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState({});
+  const [cartData, setCartData] = useState([]);
+  const [id, setId] = useState<SetStateAction<string> | null>("");
+
+  useEffect(() => {
+    const userId = localStorage.getItem("id");
+
+    if (userId) {
+      setId(userId);
+    }
+  }, []);
 
   useEffect(() => {
     axios
@@ -26,6 +36,24 @@ const MainApp = () => {
         console.log(err.response.data);
       });
   }, []);
+
+  useEffect(() => {
+    if (id) {
+      getItemsInCart();
+    }
+  }, [id]);
+
+  function getItemsInCart() {
+    console.log("what is id", id);
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/cart/items_in_cart/${id}`)
+      .then((res) => {
+        setCartData(res.data);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  }
 
   const openLoginLModal = () => {
     setOpen(true);
@@ -41,6 +69,8 @@ const MainApp = () => {
         openLoginModal={openLoginLModal}
         closeLoginModal={closeLoginModal}
         open={open}
+        cartData={cartData}
+        getItemsInCart={getItemsInCart}
       />
       <Route path="/" exact>
         <HomePage />
@@ -51,7 +81,12 @@ const MainApp = () => {
       </Route>
 
       <Route path="/:category" exact>
-        <Content openLoginModal={openLoginLModal} open={open} data={menu} />
+        <Content
+          openLoginModal={openLoginLModal}
+          open={open}
+          data={menu}
+          getItemsInCart={getItemsInCart}
+        />
       </Route>
 
       <Route path="/new" exact>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import { BsArrowRightShort } from "react-icons/bs";
+import axios from "axios";
 
 interface Inputs {
   size: string;
@@ -27,12 +28,14 @@ interface Props {
   open: boolean;
   openLoginModal: () => void;
   val: ItemInformation;
+  getItemsInCart: () => void;
 }
 
 const SingleCardComponent: React.FC<Props> = ({
   open,
   openLoginModal,
   val,
+  getItemsInCart,
 }) => {
   const [order, setOrder] = useState(false);
   const [token, setToken] = useState("");
@@ -50,15 +53,27 @@ const SingleCardComponent: React.FC<Props> = ({
   }, []);
 
   const onSubmit = (values: Inputs) => {
+    let price = Number(values.size.split("$")[1]);
+    let quantity = Number(values.quantity);
+
     let userOrder = {
       ...val,
-      size: values.size,
-      quantity: values.quantity,
+      price: price * quantity,
+      quantity: Number(values.quantity),
       size_price: "",
+      user_id: Number(id),
     };
-    //  console.log(values);
-    console.log("clicked value", userOrder);
-    setOrder(false);
+
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/api/cart/add`, userOrder)
+      .then((res) => {
+        console.log(res.data);
+        getItemsInCart();
+        setOrder(false);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
   };
 
   const handleOrder = () => {

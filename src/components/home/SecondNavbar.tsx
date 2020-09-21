@@ -5,15 +5,37 @@ import CheckoutCartModal from "./CheckoutCartModal";
 import LoginModal from "./LoginModal";
 import DeliveryModal from "./DeliveryModal";
 
+interface ItemInformation {
+  category: string;
+  category_name: string;
+  cheese: string;
+  description: string;
+  dressing: any;
+  price: number;
+  quantity: number;
+  user_id: number;
+  id: number;
+  name: string;
+  img_url: string;
+  peppers: any;
+  sauce: any;
+  side: string;
+  size_price: any;
+}
+
 interface Props {
   open: boolean;
   openLoginModal: () => void;
   closeLoginModal: () => void;
+  getItemsInCart: () => void;
+  cartData: ItemInformation[];
 }
 const SecondNavbar: React.FC<Props> = ({
   open,
   openLoginModal,
   closeLoginModal,
+  getItemsInCart,
+  cartData,
 }) => {
   return (
     <div className="SecondNavbar">
@@ -33,7 +55,10 @@ const SecondNavbar: React.FC<Props> = ({
             />
           </div>
           <div className="btn-checkout btns">
-            <CheckoutCartModal />
+            <CheckoutCartModal
+              getItemsInCart={getItemsInCart}
+              cartData={cartData}
+            />
           </div>
         </nav>
       </div>
