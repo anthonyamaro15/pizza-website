@@ -1,7 +1,6 @@
-import React, { useState, useEffect, SetStateAction } from "react";
+import React, { useState } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import axios from "axios";
 
 interface User {
   address: string;
@@ -10,31 +9,12 @@ interface User {
   id: number;
 }
 
-const DeliveryModal = () => {
-  const [id, setId] = useState<SetStateAction<string> | null>("");
-  const [user, setUser] = useState<User[]>([]);
+interface Props {
+  user: User[];
+}
+
+const DeliveryModal: React.FC<Props> = ({ user }) => {
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const userId = localStorage.getItem("id");
-
-    if (userId) {
-      setId(userId);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (id) {
-      axios
-        .get(`${process.env.REACT_APP_API_URL}/api/cart/user/${id}`)
-        .then((res) => {
-          setUser(res.data);
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-        });
-    }
-  }, [id]);
 
   return (
     <>
