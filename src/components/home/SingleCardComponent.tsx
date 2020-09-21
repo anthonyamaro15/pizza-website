@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import pizza from "../../imgs/pizza.jpg";
+import { SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import { BsArrowRightShort } from "react-icons/bs";
 
@@ -36,19 +36,28 @@ const SingleCardComponent: React.FC<Props> = ({
 }) => {
   const [order, setOrder] = useState(false);
   const [token, setToken] = useState("");
+  const [id, setId] = useState<SetStateAction<string> | null>("");
   const { register, handleSubmit } = useForm<Inputs>();
 
-  //   console.log("from single ", val);
-
   useEffect(() => {
-    const getToken = localStorage.getItem("token");
-    if (getToken) {
+    const getToken = localStorage.getItem("client_token");
+    const userId = localStorage.getItem("id");
+
+    if (getToken && userId) {
       setToken(getToken);
+      setId(userId);
     }
   }, []);
 
   const onSubmit = (values: Inputs) => {
-    console.log(values);
+    let userOrder = {
+      ...val,
+      size: values.size,
+      quantity: values.quantity,
+      size_price: "",
+    };
+    //  console.log(values);
+    console.log("clicked value", userOrder);
     setOrder(false);
   };
 
@@ -83,10 +92,11 @@ const SingleCardComponent: React.FC<Props> = ({
               <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="size">
                   <select name="size" id="size" ref={register}>
-                    <option value="large 23.95">Large $23.95</option>
-                    <option value="medium 23.95">medium $23.95</option>
-                    <option value="small 23.95">small $23.95</option>
-                    <option value="personal 23.95">personal $23.95</option>
+                    {val.size_price.map((th: string, i: number) => (
+                      <option value={th} key={i}>
+                        {th}
+                      </option>
+                    ))}
                   </select>
                 </label>
                 <label htmlFor="quantity">
@@ -111,7 +121,5 @@ const SingleCardComponent: React.FC<Props> = ({
     </div>
   );
 };
-
-// BsArrowRightShort;
 
 export default SingleCardComponent;

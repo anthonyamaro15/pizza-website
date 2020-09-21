@@ -1,6 +1,6 @@
 import { Value } from "knex";
 import axios from "axios";
-import React, { ReactNode, useState, useEffect } from "react";
+import React from "react";
 import SingleCardComponent from "./SingleCardComponent";
 import { useParams } from "react-router-dom";
 

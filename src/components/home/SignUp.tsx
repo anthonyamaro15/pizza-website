@@ -1,24 +1,68 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
+interface InputValues {
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone_number: string;
+  address: string;
+  password: string;
+  pass_confirmation: string;
+}
 const SignUp = () => {
+  const { register, handleSubmit, reset } = useForm<InputValues>();
+
+  const onSubmit = (values: InputValues) => {
+    const {
+      first_name,
+      last_name,
+      email,
+      phone_number,
+      address,
+      password,
+    } = values;
+    const saveData = {
+      first_name,
+      last_name,
+      email,
+      phone_number,
+      address,
+      password,
+    };
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/api/register`, saveData)
+      .then((res) => {
+        console.log("response ", res.data);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  };
   return (
     <div className="SignUp">
       <h1>create an account</h1>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="share-clss">
           <label htmlFor="first_name">
             first name
-            <input type="text" name="first_name" id="first_name" />
+            <input
+              type="text"
+              name="first_name"
+              id="first_name"
+              ref={register}
+            />
           </label>
           <label htmlFor="last_name">
             last name
-            <input type="text" name="last_name" id="last_name" />
+            <input type="text" name="last_name" id="last_name" ref={register} />
           </label>
         </div>
 
         <label htmlFor="email">
           email
-          <input type="email" name="email" id="email" />
+          <input type="email" name="email" id="email" ref={register} />
         </label>
         <label htmlFor="phone_number">
           phone number
@@ -27,13 +71,19 @@ const SignUp = () => {
             name="phone_number"
             id="phone_number"
             placeholder="847-123-45-67"
+            ref={register}
           />
+        </label>
+
+        <label htmlFor="address" className="address">
+          address:
+          <input type="text" name="address" id="address" ref={register} />
         </label>
 
         <div className="share-clss">
           <label htmlFor="password">
             password
-            <input type="text" name="password" id="password" />
+            <input type="text" name="password" id="password" ref={register} />
           </label>
           <label htmlFor="pass_comfirmation">
             password comfirmation
@@ -41,6 +91,7 @@ const SignUp = () => {
               type="text"
               name="pass_comfirmation"
               id="pass_comfirmation"
+              ref={register}
             />
           </label>
         </div>

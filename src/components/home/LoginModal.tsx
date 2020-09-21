@@ -2,11 +2,18 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
 interface Props {
   open: boolean;
   openLoginModal: () => void;
   closeLoginModal: () => void;
+}
+
+interface InputValues {
+  email: string;
+  password: string;
 }
 
 const LoginModal: React.FC<Props> = ({
@@ -15,6 +22,7 @@ const LoginModal: React.FC<Props> = ({
   closeLoginModal,
 }) => {
   //   const [setOpen] = useState(false);
+  const { register, handleSubmit, reset } = useForm<InputValues>();
   const history = useHistory();
 
   const redirect = () => {
@@ -28,6 +36,20 @@ const LoginModal: React.FC<Props> = ({
     //  setOpen(false);
     closeLoginModal();
   };
+
+  const onSubmit = (values: InputValues) => {
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/api/login`, values)
+      .then((res) => {
+        console.log(res.data);
+        localStorage.setItem("client_token", JSON.stringify(res.data.token));
+        localStorage.setItem("id", JSON.stringify(res.data.id));
+        closeLoginModal();
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  };
   return (
     <>
       <button className="login" onClick={openLoginModal}>
@@ -37,7 +59,7 @@ const LoginModal: React.FC<Props> = ({
         <div className="Forms-wrapper">
           <div className="LoginForm">
             <h3>login</h3>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <label htmlFor="firstName">
                 email
                 <input
@@ -45,12 +67,18 @@ const LoginModal: React.FC<Props> = ({
                   name="email"
                   id="email"
                   placeholder="lou@malnatis.com"
+                  ref={register}
                 />
               </label>
 
               <label htmlFor="lastName">
                 password
-                <input type="password" name="password" id="password" />
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  ref={register}
+                />
               </label>
 
               <button>sign in</button>
