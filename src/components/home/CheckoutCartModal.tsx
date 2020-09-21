@@ -34,23 +34,43 @@ const CheckoutCartModal: React.FC<Props> = ({ getItemsInCart, cartData }) => {
   const [open, setOpen] = React.useState(false);
   const [itemsInCart] = useState(true);
   let [total, setTotal] = useState(0);
+  let [subTo, setSubTo] = useState(0);
+  //   const [itemToRemove, setItemToRemove] = useState(false);
 
   useEffect(() => {
     console.log(cartData);
-    cartData.forEach((item) => setTotal((total += item.price)));
+
+    cartData.forEach((item) => {
+      console.log("inside the for each ", item);
+
+      // initial += item.price;
+      setTotal(total + item.price);
+    });
+
+    //  console.log("total here ", total);
+    //  setItemToRemove(0);
   }, [cartData]);
+
+  //   useEffect(() => {
+  //     console.log("total is chaninging");
+  //     setTotal(itemToRemove - total);
+  //   }, [itemToRemove]);
 
   const removeFromCart = (item: ItemInformation) => {
     axios
       .delete(`${process.env.REACT_APP_API_URL}/api/cart/remove/${item.id}`)
       .then((res) => {
         console.log(res.data);
+        setSubTo(total - item.price);
         getItemsInCart();
       })
       .catch((err) => {
-        console.log(err.response.data);
+        console.log(err.response);
       });
   };
+
+  //   console.log("total here ", total);
+  //   console.log("what is item to remove ", itemToRemove);
 
   return (
     <>
@@ -59,7 +79,9 @@ const CheckoutCartModal: React.FC<Props> = ({ getItemsInCart, cartData }) => {
         <span className="cart">
           <ImCart />
         </span>
-        <span className="inner-btn">{`($${total.toFixed(2)})`}</span>
+        <span className="inner-btn">{`($${
+          subTo ? subTo.toFixed(2) : total.toFixed(2)
+        })`}</span>
       </button>
       <Modal open={open} onClose={() => setOpen(false)}>
         <div className="modal-wrapper">
