@@ -23,7 +23,7 @@ const SingleCardComponent = () => {
   return (
     <div className="CheckoutCartOptions">
       <div className="img-wrapper">
-        <img src={pizza} alt="pizza image" />
+        <img src={pizza} alt="this is logo of company" />
       </div>
       <div className="space-between">
         <div className="item-information">

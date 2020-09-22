@@ -36,10 +36,6 @@ const NavRoutes = () => {
           drinks
         </NavLink>
 
-        <NavLink to="/beer" exact activeClassName="active">
-          beer & wine
-        </NavLink>
-
         <NavLink to="/extras" exact activeClassName="active">
           extras
         </NavLink>
