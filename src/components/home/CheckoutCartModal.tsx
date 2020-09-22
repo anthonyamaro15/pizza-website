@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { ImCart } from "react-icons/im";
@@ -27,7 +28,6 @@ interface ItemInformation {
 interface Props {
   getItemsInCart: () => void;
   cartData: ItemInformation[];
-  //   cartData: any;
 }
 
 const CheckoutCartModal: React.FC<Props> = ({ getItemsInCart, cartData }) => {
@@ -35,6 +35,7 @@ const CheckoutCartModal: React.FC<Props> = ({ getItemsInCart, cartData }) => {
   const [itemsInCart] = useState(true);
   let [total, setTotal] = useState(0);
   let [subTo, setSubTo] = useState(0);
+  const history = useHistory();
   //   const [itemToRemove, setItemToRemove] = useState(false);
 
   useEffect(() => {
@@ -72,6 +73,11 @@ const CheckoutCartModal: React.FC<Props> = ({ getItemsInCart, cartData }) => {
   //   console.log("total here ", total);
   //   console.log("what is item to remove ", itemToRemove);
 
+  const placeOrder = () => {
+    let token = "abc";
+    history.push(`/order/${token}`);
+    setOpen(false);
+  };
   return (
     <>
       <button className="checkout" onClick={() => setOpen(true)}>
@@ -133,7 +139,7 @@ const CheckoutCartModal: React.FC<Props> = ({ getItemsInCart, cartData }) => {
                   total: <span>$30.76</span>
                 </p>
                 <div className="checkout-button">
-                  <button className="btn">
+                  <button className="btn" onClick={placeOrder}>
                     Checkout
                     <span>
                       <BsArrowRightShort />

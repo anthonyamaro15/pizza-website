@@ -17,32 +17,56 @@ const Footer = () => {
           <div className="web-links">
             <span>
               {" "}
-              <a href="google.com" target="_blank">
+              <a
+                href="https://www.google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaFacebookF />
               </a>{" "}
             </span>
             <span>
-              <a>
+              <a
+                href="https://www.google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaInstagram />
               </a>{" "}
             </span>
             <span>
-              <a>
+              <a
+                href="https://www.google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaTwitter />
               </a>{" "}
             </span>
             <span>
-              <a>
+              <a
+                href="https://www.google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaGooglePlusG />
               </a>{" "}
             </span>
             <span>
-              <a>
+              <a
+                href="https://www.google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <ImYoutube2 />
               </a>{" "}
             </span>
             <span>
-              <a>
+              <a
+                href="https://www.google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaYelp />
               </a>{" "}
             </span>
@@ -66,7 +90,7 @@ const Footer = () => {
         </nav>
         <div className="more-info">
           <div className="nation-wide">
-            <img src={logo3} alt="" />
+            <img src={logo3} alt="this is just a company logo displaying" />
             <h3>lou's nationwide</h3>
             <p>
               Tastes of Chicago delivers all of Chicago’s favorite foods
@@ -74,7 +98,7 @@ const Footer = () => {
             </p>
           </div>
           <div className="work-forus">
-            <img src={logo2} alt="" />
+            <img src={logo2} alt="Another logo example showing" />
             <h3>Work for Lou's</h3>
             <p>
               Named one of the Top Workplaces in Chicago for the past seven

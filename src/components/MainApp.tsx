@@ -11,6 +11,7 @@ import ForgotPassword from "./home/ForgotPassword";
 import HomePage from "./home/homepage/HomePage";
 
 import MainAdmin from "./admin/MainAdmin";
+import OrderProgress from "./home/OrderProgress";
 
 const MainApp = () => {
   const [open, setOpen] = useState(false);
@@ -100,6 +101,9 @@ const MainApp = () => {
         <MainAdmin />
       </Route>
 
+      <Route exact path="/order/:token">
+        <OrderProgress />
+      </Route>
       <Footer />
     </div>
   );
