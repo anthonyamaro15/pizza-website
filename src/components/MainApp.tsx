@@ -12,6 +12,7 @@ import HomePage from "./home/homepage/HomePage";
 
 import MainAdmin from "./admin/MainAdmin";
 import OrderProgress from "./home/OrderProgress";
+import AdminDashboard from "./admin/AdminDashboard";
 
 const MainApp = () => {
   const [open, setOpen] = useState(false);
@@ -99,6 +100,9 @@ const MainApp = () => {
 
       <Route exact path="/admin">
         <MainAdmin />
+      </Route>
+      <Route exact path="/dashboard">
+        <AdminDashboard />
       </Route>
 
       <Route exact path="/order/:token">
