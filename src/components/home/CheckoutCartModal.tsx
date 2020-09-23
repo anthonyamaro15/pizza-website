@@ -7,6 +7,24 @@ import CheckoutCartOptions from "./CheckoutCartOptions";
 import { BsArrowRightShort } from "react-icons/bs";
 import axios from "axios";
 
+import io from "socket.io-client";
+
+const socket = io("http://localhost:4200");
+
+// socket.on("connect", () => {
+//   console.log("connected to server");
+
+//   socket.emit("createMessage", { from: "anthony", text: "learning" });
+
+//   socket.on("disconnect", () => {
+//     console.log("user disconnected from server");
+//   });
+// });
+
+// socket.on("newMessage", (message: any) => {
+//   console.log("newMessage ", message);
+// });
+
 interface ItemInformation {
   category: string;
   category_name: string;
@@ -37,6 +55,15 @@ const CheckoutCartModal: React.FC<Props> = ({ getItemsInCart, cartData }) => {
   let [subTo, setSubTo] = useState(0);
   const history = useHistory();
   //   const [itemToRemove, setItemToRemove] = useState(false);
+
+  useEffect(() => {
+    // const socket = io("http://localhost:4200/");
+    socket.on("connect", () => {
+      console.log("connected to server");
+    });
+  }, []);
+
+  //  console.log("what is this???", testing);
 
   useEffect(() => {
     console.log(cartData);
@@ -77,6 +104,8 @@ const CheckoutCartModal: React.FC<Props> = ({ getItemsInCart, cartData }) => {
     let token = "abc";
     history.push(`/order/${token}`);
     setOpen(false);
+
+    socket.emit("order", { cartData, token });
   };
   return (
     <>
