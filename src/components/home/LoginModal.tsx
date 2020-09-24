@@ -50,7 +50,6 @@ const LoginModal: React.FC<Props> = ({
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/login`, values)
       .then((res) => {
-        console.log(res.data);
         localStorage.setItem("client_token", JSON.stringify(res.data.token));
         localStorage.setItem("id", JSON.stringify(res.data.id));
         closeLoginModal();

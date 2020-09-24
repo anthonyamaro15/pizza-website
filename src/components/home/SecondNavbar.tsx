@@ -99,6 +99,7 @@ const SecondNavbar: React.FC<Props> = ({
             <CheckoutCartModal
               getItemsInCart={getItemsInCart}
               cartData={cartData}
+              user={user}
             />
           </div>
         </nav>

@@ -25,6 +25,15 @@ const socket = io("http://localhost:4200");
 //   console.log("newMessage ", message);
 // });
 
+interface User {
+  address: string;
+  first_name: string;
+  last_name: string;
+  id: number;
+  email: string;
+  phone_number: string;
+}
+
 interface ItemInformation {
   category: string;
   category_name: string;
@@ -46,9 +55,14 @@ interface ItemInformation {
 interface Props {
   getItemsInCart: () => void;
   cartData: ItemInformation[];
+  user: User[];
 }
 
-const CheckoutCartModal: React.FC<Props> = ({ getItemsInCart, cartData }) => {
+const CheckoutCartModal: React.FC<Props> = ({
+  getItemsInCart,
+  cartData,
+  user,
+}) => {
   const [open, setOpen] = React.useState(false);
   const [itemsInCart] = useState(true);
   let [total, setTotal] = useState(0);
@@ -105,7 +119,12 @@ const CheckoutCartModal: React.FC<Props> = ({ getItemsInCart, cartData }) => {
     history.push(`/order/${token}`);
     setOpen(false);
 
-    socket.emit("order", { cartData, token });
+    socket.emit("order", {
+      cartData,
+      token,
+      user: user[0],
+      createdAt: new Date().toLocaleTimeString(),
+    });
   };
   return (
     <>
