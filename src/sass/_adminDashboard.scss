@@ -1,3 +1,65 @@
 .AdminDashboard {
-  border: 1px solid red;
+  //   border: 1px solid red;
+
+  .AdminDashboard-inner {
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+
+    .order-information {
+      display: flex;
+      justify-content: space-between;
+
+      .shared {
+        //   border: 1px solid blue;
+        border: 1px solid rgb(219, 219, 219);
+
+        &:nth-child(2) {
+          border-left: none;
+        }
+        &:nth-child(3) {
+          border-left: none;
+        }
+
+        &:nth-child(4) {
+          border-left: none;
+        }
+
+        &:nth-child(5) {
+          border-left: none;
+        }
+
+        width: 100%;
+        background: #f4f4f4;
+
+        .inner-item-wrapper {
+          padding: 0.7rem 0.5rem;
+
+          p {
+            margin-bottom: 0.3rem;
+          }
+
+          form {
+            label {
+              select {
+                border: none;
+                border: 1px solid rgb(219, 219, 219);
+                padding: 0.3rem;
+                border-radius: 3px;
+                outline: none;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+
+      h3 {
+        border-bottom: 1px solid rgb(219, 219, 219);
+        padding: 0.6rem;
+        text-transform: capitalize;
+        font-size: 1rem;
+      }
+    }
+  }
 }
