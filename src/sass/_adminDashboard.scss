@@ -1,10 +1,9 @@
 .AdminDashboard {
-  //   border: 1px solid red;
-
   .AdminDashboard-inner {
     max-width: 1350px;
-    margin: 0 auto;
+    margin: 5rem auto;
     padding: 0 0.5rem;
+    height: 30vh;
 
     .order-information {
       display: flex;
