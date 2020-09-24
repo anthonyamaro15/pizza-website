@@ -181,7 +181,7 @@ const CheckoutCartModal: React.FC<Props> = ({
 
               <div className="total-information">
                 <p>
-                  subtotal: <span>{`$${total}`}</span>
+                  subtotal: <span>{`$${total.toFixed(2)}`}</span>
                 </p>
                 <p>
                   tax: <span>{`$${tax.toFixed(2)}`}</span>

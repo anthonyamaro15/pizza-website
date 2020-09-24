@@ -17,6 +17,24 @@ interface ItemInformation {
   size_price: any;
 }
 
+interface UserCart {
+  category: string;
+  category_name: string;
+  cheese: string;
+  description: string;
+  dressing: any;
+  price: number;
+  quantity: number;
+  user_id: number;
+  id: number;
+  name: string;
+  img_url: string;
+  peppers: any;
+  sauce: any;
+  side: string;
+  size_price: any;
+}
+
 interface Values {
   appetizers?: ItemInformation[];
   combos?: ItemInformation[];
@@ -34,6 +52,7 @@ interface Props {
   openLoginModal: () => void;
   data: Values;
   getItemsInCart: () => void;
+  cartData: UserCart[];
 }
 
 const Content: React.FC<Props> = ({
@@ -41,6 +60,7 @@ const Content: React.FC<Props> = ({
   openLoginModal,
   data,
   getItemsInCart,
+  cartData,
 }) => {
   const { category } = useParams<{ category: string }>();
   const {
@@ -83,6 +103,7 @@ const Content: React.FC<Props> = ({
               open={open}
               openLoginModal={openLoginModal}
               getItemsInCart={getItemsInCart}
+              cartData={cartData}
             />
           ))}
         </div>
@@ -98,6 +119,7 @@ const Content: React.FC<Props> = ({
               open={open}
               openLoginModal={openLoginModal}
               getItemsInCart={getItemsInCart}
+              cartData={cartData}
             />
           ))}
         </div>
@@ -113,6 +135,7 @@ const Content: React.FC<Props> = ({
               open={open}
               openLoginModal={openLoginModal}
               getItemsInCart={getItemsInCart}
+              cartData={cartData}
             />
           ))}
         </div>
@@ -128,6 +151,7 @@ const Content: React.FC<Props> = ({
               open={open}
               openLoginModal={openLoginModal}
               getItemsInCart={getItemsInCart}
+              cartData={cartData}
             />
           ))}
         </div>
@@ -143,6 +167,7 @@ const Content: React.FC<Props> = ({
               open={open}
               openLoginModal={openLoginModal}
               getItemsInCart={getItemsInCart}
+              cartData={cartData}
             />
           ))}
         </div>
@@ -160,6 +185,7 @@ const Content: React.FC<Props> = ({
                 open={open}
                 openLoginModal={openLoginModal}
                 getItemsInCart={getItemsInCart}
+                cartData={cartData}
               />
             ))}
           </div>
@@ -176,6 +202,7 @@ const Content: React.FC<Props> = ({
                 open={open}
                 openLoginModal={openLoginModal}
                 getItemsInCart={getItemsInCart}
+                cartData={cartData}
               />
             ))}
           </div>
@@ -192,6 +219,7 @@ const Content: React.FC<Props> = ({
                 open={open}
                 openLoginModal={openLoginModal}
                 getItemsInCart={getItemsInCart}
+                cartData={cartData}
               />
             ))}
           </div>
@@ -208,6 +236,7 @@ const Content: React.FC<Props> = ({
                 open={open}
                 openLoginModal={openLoginModal}
                 getItemsInCart={getItemsInCart}
+                cartData={cartData}
               />
             ))}
           </div>
@@ -224,6 +253,7 @@ const Content: React.FC<Props> = ({
                 open={open}
                 openLoginModal={openLoginModal}
                 getItemsInCart={getItemsInCart}
+                cartData={cartData}
               />
             ))}
           </div>
@@ -240,6 +270,7 @@ const Content: React.FC<Props> = ({
                 open={open}
                 openLoginModal={openLoginModal}
                 getItemsInCart={getItemsInCart}
+                cartData={cartData}
               />
             ))}
           </div>
@@ -256,6 +287,7 @@ const Content: React.FC<Props> = ({
                 open={open}
                 openLoginModal={openLoginModal}
                 getItemsInCart={getItemsInCart}
+                cartData={cartData}
               />
             ))}
           </div>
@@ -272,6 +304,7 @@ const Content: React.FC<Props> = ({
                 open={open}
                 openLoginModal={openLoginModal}
                 getItemsInCart={getItemsInCart}
+                cartData={cartData}
               />
             ))}
           </div>

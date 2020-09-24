@@ -24,11 +24,30 @@ interface ItemInformation {
   size_price?: any;
 }
 
+interface UserCart {
+  category: string;
+  category_name: string;
+  cheese: string;
+  description: string;
+  dressing: any;
+  price: number;
+  quantity: number;
+  user_id: number;
+  id: number;
+  name: string;
+  img_url: string;
+  peppers: any;
+  sauce: any;
+  side: string;
+  size_price: any;
+}
+
 interface Props {
   open: boolean;
   openLoginModal: () => void;
   val: ItemInformation;
   getItemsInCart: () => void;
+  cartData: UserCart[];
 }
 
 const SingleCardComponent: React.FC<Props> = ({
@@ -36,11 +55,13 @@ const SingleCardComponent: React.FC<Props> = ({
   openLoginModal,
   val,
   getItemsInCart,
+  cartData,
 }) => {
   const [order, setOrder] = useState(false);
   const [token, setToken] = useState("");
   const [id, setId] = useState<SetStateAction<string> | null>("");
   const { register, handleSubmit } = useForm<Inputs>();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getToken = localStorage.getItem("client_token");
@@ -52,7 +73,10 @@ const SingleCardComponent: React.FC<Props> = ({
     }
   }, []);
 
+  //   console.log("do we have cart data?? ", cartData);
+
   const onSubmit = (values: Inputs) => {
+    setLoading(true);
     let price = Number(values.size.split("$")[1]);
     let quantity = Number(values.quantity);
 
@@ -64,16 +88,37 @@ const SingleCardComponent: React.FC<Props> = ({
       user_id: Number(id),
     };
 
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/api/cart/add`, userOrder)
-      .then((res) => {
-        console.log(res.data);
-        getItemsInCart();
-        setOrder(false);
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
+    let alreadyInCart = cartData.filter((item) => item.id === userOrder.id);
+
+    if (alreadyInCart.length) {
+      let quantity = (alreadyInCart[0].quantity += Number(values.quantity));
+      console.log("what is quantity?? ", quantity);
+      axios
+        .patch(
+          `${process.env.REACT_APP_API_URL}/api/cart/update_item_in_cart/${id}/${userOrder.id}`,
+          { quantity }
+        )
+        .then(() => {
+          getItemsInCart();
+          setOrder(false);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
+    } else {
+      axios
+        .post(`${process.env.REACT_APP_API_URL}/api/cart/add`, userOrder)
+        .then((res) => {
+          console.log(res.data);
+          getItemsInCart();
+          setOrder(false);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+        });
+    }
   };
 
   const handleOrder = () => {
@@ -123,7 +168,7 @@ const SingleCardComponent: React.FC<Props> = ({
                   </select>
                 </label>
                 <button type="submit" className="btn">
-                  Add to Cart
+                  {loading ? "adding..." : "Add to Cart"}
                   <span>
                     <BsArrowRightShort />
                   </span>

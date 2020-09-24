@@ -96,6 +96,7 @@ const MainApp = () => {
           open={open}
           data={menu}
           getItemsInCart={getItemsInCart}
+          cartData={cartData}
         />
       </Route>
 
