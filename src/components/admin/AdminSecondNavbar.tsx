@@ -1,5 +1,5 @@
 import React, { useState, useEffect, SetStateAction } from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../imgs/logo.png";
 import LoginModal from "../home/LoginModal";
 import axios from "axios";
@@ -26,8 +26,6 @@ interface Props {
   open: boolean;
   openLoginModal: () => void;
   closeLoginModal: () => void;
-  //   getItemsInCart: () => void;
-  //   cartData: ItemInformation[];
 }
 
 interface User {
@@ -43,14 +41,9 @@ const AdminSecondNavbar: React.FC<Props> = ({
   open,
   openLoginModal,
   closeLoginModal,
-  //   getItemsInCart,
-  //   cartData,
 }) => {
   const [id, setId] = useState<SetStateAction<string> | null>("");
   const [user, setUser] = useState<User[]>([]);
-  const param = useRouteMatch();
-
-  console.log("what are the params ", param);
 
   useEffect(() => {
     const userId = localStorage.getItem("id");
@@ -67,12 +60,10 @@ const AdminSecondNavbar: React.FC<Props> = ({
   }, [id]);
 
   function getUserData() {
-    console.log("is getting data??? ");
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/cart/user/${id}`)
       .then((res) => {
         setUser(res.data);
-        console.log("from second navbar ", res.data);
       })
       .catch((err) => {
         console.log(err.response.data);

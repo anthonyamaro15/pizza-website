@@ -36,7 +36,7 @@ const MainApp = () => {
         setMenu(res.data);
       })
       .catch((err) => {
-        console.log(err.response.data);
+        console.log(err.response);
       });
   }, []);
 
@@ -47,7 +47,6 @@ const MainApp = () => {
   }, [id]);
 
   function getItemsInCart() {
-    console.log("what is id", id);
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/cart/items_in_cart/${id}`)
       .then((res) => {

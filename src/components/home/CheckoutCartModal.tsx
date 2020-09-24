@@ -80,10 +80,10 @@ const CheckoutCartModal: React.FC<Props> = ({
   //  console.log("what is this???", testing);
 
   useEffect(() => {
-    console.log(cartData);
+    //  console.log(cartData);
 
     cartData.forEach((item) => {
-      console.log("inside the for each ", item);
+      // console.log("inside the for each ", item);
 
       // initial += item.price;
       setTotal(total + item.price);
@@ -126,6 +126,9 @@ const CheckoutCartModal: React.FC<Props> = ({
       createdAt: new Date().toLocaleTimeString(),
     });
   };
+
+  let tax = (8.25 * total) / 100;
+  let totalAmount = tax + total + 4;
   return (
     <>
       <button className="checkout" onClick={() => setOpen(true)}>
@@ -139,7 +142,7 @@ const CheckoutCartModal: React.FC<Props> = ({
       </button>
       <Modal open={open} onClose={() => setOpen(false)}>
         <div className="modal-wrapper">
-          {itemsInCart ? (
+          {cartData.length ? (
             <div className="madal-wrapper-inner">
               <div className="items-in-cart">
                 {cartData.map((items) => (
@@ -155,6 +158,9 @@ const CheckoutCartModal: React.FC<Props> = ({
                             remove
                           </span>
                           )
+                          <span className="quantity">
+                            {items.quantity > 1 ? `X${items.quantity}` : ""}
+                          </span>
                         </p>
                         <ul>
                           <li>just right</li>
@@ -175,16 +181,16 @@ const CheckoutCartModal: React.FC<Props> = ({
 
               <div className="total-information">
                 <p>
-                  subtotal: <span>$23.95</span>
+                  subtotal: <span>{`$${total}`}</span>
                 </p>
                 <p>
-                  tax: <span>$2.95</span>
+                  tax: <span>{`$${tax.toFixed(2)}`}</span>
                 </p>
                 <p>
                   delivery: <span>$4.00</span>
                 </p>
                 <p>
-                  total: <span>$30.76</span>
+                  total: <span>{`$${totalAmount.toFixed(2)}`}</span>
                 </p>
                 <div className="checkout-button">
                   <button className="btn" onClick={placeOrder}>
