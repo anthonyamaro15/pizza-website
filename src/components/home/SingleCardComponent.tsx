@@ -73,8 +73,6 @@ const SingleCardComponent: React.FC<Props> = ({
     }
   }, []);
 
-  //   console.log("do we have cart data?? ", cartData);
-
   const onSubmit = (values: Inputs) => {
     setLoading(true);
     let price = Number(values.size.split("$")[1]);
@@ -82,8 +80,8 @@ const SingleCardComponent: React.FC<Props> = ({
 
     let userOrder = {
       ...val,
-      price: price * quantity,
-      quantity: Number(values.quantity),
+      price,
+      quantity,
       size_price: "",
       user_id: Number(id),
     };

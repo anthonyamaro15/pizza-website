@@ -64,39 +64,24 @@ const CheckoutCartModal: React.FC<Props> = ({
   user,
 }) => {
   const [open, setOpen] = React.useState(false);
-  const [itemsInCart] = useState(true);
   let [total, setTotal] = useState(0);
   let [subTo, setSubTo] = useState(0);
   const history = useHistory();
-  //   const [itemToRemove, setItemToRemove] = useState(false);
 
   useEffect(() => {
-    // const socket = io("http://localhost:4200/");
     socket.on("connect", () => {
       console.log("connected to server");
     });
   }, []);
 
-  //  console.log("what is this???", testing);
-
   useEffect(() => {
-    //  console.log(cartData);
+    let sumValues = 0;
 
     cartData.forEach((item) => {
-      // console.log("inside the for each ", item);
-
-      // initial += item.price;
-      setTotal(total + item.price);
+      sumValues += item.price;
     });
-
-    //  console.log("total here ", total);
-    //  setItemToRemove(0);
+    setTotal(sumValues);
   }, [cartData]);
-
-  //   useEffect(() => {
-  //     console.log("total is chaninging");
-  //     setTotal(itemToRemove - total);
-  //   }, [itemToRemove]);
 
   const removeFromCart = (item: ItemInformation) => {
     axios
@@ -110,9 +95,6 @@ const CheckoutCartModal: React.FC<Props> = ({
         console.log(err.response);
       });
   };
-
-  //   console.log("total here ", total);
-  //   console.log("what is item to remove ", itemToRemove);
 
   const placeOrder = () => {
     let token = "abc";
@@ -168,7 +150,7 @@ const CheckoutCartModal: React.FC<Props> = ({
                         </ul>
                       </div>
                     </div>
-                    <span className="price">${items.price}</span>
+                    <span className="price">${items.price.toFixed(2)}</span>
                   </div>
                 ))}
               </div>
