@@ -1,5 +1,5 @@
 import React, { useState, useEffect, SetStateAction } from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../imgs/logo.png";
 import CheckoutCartModal from "./CheckoutCartModal";
 import LoginModal from "./LoginModal";
@@ -50,9 +50,6 @@ const SecondNavbar: React.FC<Props> = ({
 }) => {
   const [id, setId] = useState<SetStateAction<string> | null>("");
   const [user, setUser] = useState<User[]>([]);
-  const param = useRouteMatch();
-
-  console.log("what are the params ", param);
 
   useEffect(() => {
     const userId = localStorage.getItem("id");
@@ -69,15 +66,13 @@ const SecondNavbar: React.FC<Props> = ({
   }, [id]);
 
   function getUserData() {
-    console.log("is getting data??? ");
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/cart/user/${id}`)
       .then((res) => {
         setUser(res.data);
-        console.log("from second navbar ", res.data);
       })
       .catch((err) => {
-        console.log(err.response.data);
+        console.log(err.response);
       });
   }
   return (
