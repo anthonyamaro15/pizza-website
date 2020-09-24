@@ -13,6 +13,7 @@ import HomePage from "./home/homepage/HomePage";
 import MainAdmin from "./admin/MainAdmin";
 import OrderProgress from "./home/OrderProgress";
 import AdminDashboard from "./admin/AdminDashboard";
+import AdminSecondNavbar from "./admin/AdminSecondNavbar";
 
 const MainApp = () => {
   const [open, setOpen] = useState(false);
@@ -67,18 +68,26 @@ const MainApp = () => {
   return (
     <div>
       <FirstNavbar />
-      <SecondNavbar
-        openLoginModal={openLoginLModal}
-        closeLoginModal={closeLoginModal}
-        open={open}
-        cartData={cartData}
-        getItemsInCart={getItemsInCart}
-      />
+
       <Route path="/" exact>
+        <SecondNavbar
+          openLoginModal={openLoginLModal}
+          closeLoginModal={closeLoginModal}
+          open={open}
+          cartData={cartData}
+          getItemsInCart={getItemsInCart}
+        />
         <HomePage />
       </Route>
 
       <Route path="/:category" exact>
+        <SecondNavbar
+          openLoginModal={openLoginLModal}
+          closeLoginModal={closeLoginModal}
+          open={open}
+          cartData={cartData}
+          getItemsInCart={getItemsInCart}
+        />
         <NavRoutes />
       </Route>
 
@@ -93,6 +102,13 @@ const MainApp = () => {
 
       <Route path="/new" exact>
         <SignUp />
+        <SecondNavbar
+          openLoginModal={openLoginLModal}
+          closeLoginModal={closeLoginModal}
+          open={open}
+          cartData={cartData}
+          getItemsInCart={getItemsInCart}
+        />
       </Route>
       <Route path="/reset_password" exact>
         <ForgotPassword />
@@ -101,11 +117,26 @@ const MainApp = () => {
       <Route exact path="/admin">
         <MainAdmin />
       </Route>
-      <Route exact path="/dashboard">
+      <Route exact path="/admin/dashboard">
+        <AdminSecondNavbar
+          openLoginModal={openLoginLModal}
+          closeLoginModal={closeLoginModal}
+          open={open}
+        />
+        <NavRoutes />
+
         <AdminDashboard />
       </Route>
 
       <Route exact path="/order/:token">
+        <SecondNavbar
+          openLoginModal={openLoginLModal}
+          closeLoginModal={closeLoginModal}
+          open={open}
+          cartData={cartData}
+          getItemsInCart={getItemsInCart}
+        />
+        <NavRoutes />
         <OrderProgress />
       </Route>
       <Footer />

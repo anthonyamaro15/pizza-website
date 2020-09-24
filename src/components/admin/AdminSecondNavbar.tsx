@@ -1,9 +1,7 @@
 import React, { useState, useEffect, SetStateAction } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import logo from "../../imgs/logo.png";
-import CheckoutCartModal from "./CheckoutCartModal";
-import LoginModal from "./LoginModal";
-import DeliveryModal from "./DeliveryModal";
+import LoginModal from "../home/LoginModal";
 import axios from "axios";
 
 interface ItemInformation {
@@ -28,8 +26,8 @@ interface Props {
   open: boolean;
   openLoginModal: () => void;
   closeLoginModal: () => void;
-  getItemsInCart: () => void;
-  cartData: ItemInformation[];
+  //   getItemsInCart: () => void;
+  //   cartData: ItemInformation[];
 }
 
 interface User {
@@ -41,12 +39,12 @@ interface User {
   phone_number: string;
 }
 
-const SecondNavbar: React.FC<Props> = ({
+const AdminSecondNavbar: React.FC<Props> = ({
   open,
   openLoginModal,
   closeLoginModal,
-  getItemsInCart,
-  cartData,
+  //   getItemsInCart,
+  //   cartData,
 }) => {
   const [id, setId] = useState<SetStateAction<string> | null>("");
   const [user, setUser] = useState<User[]>([]);
@@ -87,21 +85,11 @@ const SecondNavbar: React.FC<Props> = ({
           <img src={logo} alt="" />
         </Link>
         <nav>
-          <div className="btn-delivery btns">
-            <DeliveryModal user={user} />
-          </div>
           <div className="btn-login btns">
             <LoginModal
               open={open}
               openLoginModal={openLoginModal}
               closeLoginModal={closeLoginModal}
-              user={user}
-            />
-          </div>
-          <div className="btn-checkout btns">
-            <CheckoutCartModal
-              getItemsInCart={getItemsInCart}
-              cartData={cartData}
               user={user}
             />
           </div>
@@ -111,4 +99,4 @@ const SecondNavbar: React.FC<Props> = ({
   );
 };
 
-export default SecondNavbar;
+export default AdminSecondNavbar;
