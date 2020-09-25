@@ -21,8 +21,8 @@ const DeliveryModal: React.FC<Props> = ({ user }) => {
       <button className="delivery" onClick={() => setOpen(true)}>
         Delivery
         <span className="inner-btn">
-          {user.length && user[0].address.length > 12
-            ? user[0].address.slice(0, 12) + "..."
+          {user.length && user[0].address.length > 15
+            ? user[0].address.slice(0, 15) + "..."
             : "No address"}
         </span>
       </button>

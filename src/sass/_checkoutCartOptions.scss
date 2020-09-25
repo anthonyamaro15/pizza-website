@@ -13,6 +13,7 @@
     .item-desc {
       display: flex;
       justify-content: space-between;
+      // border: 1px solid red;
 
       .img-wrapper {
         display: flex;
@@ -24,31 +25,54 @@
 
         .item-name {
           margin-left: 1rem;
-          p {
-            display: inline-block;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            font-weight: 900;
+          //  border: 1px solid red;
+          width: 100%;
+          .name-wrapper {
+            display: flex;
 
-            span {
-              font-weight: normal;
-              text-transform: none;
-              color: #c62829;
-
-              cursor: pointer;
+            .remove-from-cart {
+              //   border: 1px solid blue;
+              display: flex;
+              flex-direction: column;
+              margin-left: 1rem;
+              margin-top: -1.2rem;
+              text-align: center;
             }
+            p {
+              display: inline-block;
+              text-transform: uppercase;
+              font-size: 0.9rem;
+              font-weight: 900;
 
-            .quantity {
-              color: #333;
-              margin-left: 0.5rem;
-              font-weight: bold;
+              span {
+                font-weight: normal;
+                text-transform: none;
+                //  color: #c62829;
+                //  font-size: 1.3rem;
+
+                //  cursor: pointer;
+              }
+
+              .icons {
+                font-size: 1.2rem;
+                cursor: pointer;
+              }
+
+              .quantity {
+                color: #333;
+                //   margin-left: 0.5rem;
+                font-weight: bold;
+                //  margin: 0rem 0 0.1rem;
+                margin-top: -0.3rem;
+              }
             }
           }
 
           ul {
             display: flex;
-            margin-top: 0.5rem;
+            margin-top: -0.5rem;
             font-size: 0.9rem;
+
             li {
               //   color: red;
               margin-left: 1rem;
@@ -61,6 +85,7 @@
 
       .price {
         font-weight: bold;
+        //   border: 1px solid green;
       }
     }
   }

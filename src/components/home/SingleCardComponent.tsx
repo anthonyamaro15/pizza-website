@@ -107,8 +107,7 @@ const SingleCardComponent: React.FC<Props> = ({
     } else {
       axios
         .post(`${process.env.REACT_APP_API_URL}/api/cart/add`, userOrder)
-        .then((res) => {
-          console.log(res.data);
+        .then(() => {
           getItemsInCart();
           setOrder(false);
           setLoading(false);
