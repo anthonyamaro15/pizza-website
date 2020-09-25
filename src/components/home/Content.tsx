@@ -91,7 +91,8 @@ const Content: React.FC<Props> = ({
   );
 
   // check what the params are. so we know which component to render.
-  return category === "pizzas" ? (
+
+  return cartData && category === "pizzas" ? (
     <div className="Content">
       <div className="Content-inner">
         <h1>Deep dish pizza</h1>

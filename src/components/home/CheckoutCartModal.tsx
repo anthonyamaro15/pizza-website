@@ -6,6 +6,8 @@ import { ImCart } from "react-icons/im";
 import CheckoutCartOptions from "./CheckoutCartOptions";
 import { BsArrowRightShort } from "react-icons/bs";
 import axios from "axios";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 
 import io from "socket.io-client";
 
@@ -66,6 +68,7 @@ const CheckoutCartModal: React.FC<Props> = ({
   const [open, setOpen] = React.useState(false);
   let [total, setTotal] = useState(0);
   let [subTo, setSubTo] = useState(0);
+
   const history = useHistory();
 
   useEffect(() => {
@@ -86,14 +89,39 @@ const CheckoutCartModal: React.FC<Props> = ({
   const removeFromCart = (item: ItemInformation) => {
     axios
       .delete(`${process.env.REACT_APP_API_URL}/api/cart/remove/${item.id}`)
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
         setSubTo(total - item.price);
         getItemsInCart();
       })
       .catch((err) => {
         console.log(err.response);
       });
+  };
+
+  const toggleCartItems = (item: ItemInformation, type: string) => {
+    axios
+      .patch(
+        `${process.env.REACT_APP_API_URL}/api/cart/update_item_in_cart/${user[0].id}/${item.id}`,
+        { quantity: type === "plus" ? item.quantity + 1 : item.quantity - 1 }
+      )
+      .then(() => {
+        getItemsInCart();
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
+  const AddByOne = (item: ItemInformation) => {
+    toggleCartItems(item, "plus");
+  };
+
+  const removeByOne = (item: ItemInformation) => {
+    if (item.quantity === 1) {
+      removeFromCart(item);
+    } else {
+      toggleCartItems(item, "minus");
+    }
   };
 
   const placeOrder = () => {
@@ -133,17 +161,33 @@ const CheckoutCartModal: React.FC<Props> = ({
                       <img src={items.img_url} alt={items.name} />
 
                       <div className="item-name">
-                        <p>{items.name}</p>
-                        <p className="remove-from-cart">
-                          (
-                          <span onClick={() => removeFromCart(items)}>
+                        <div className="name-wrapper">
+                          <p>{items.name}</p>
+                          <p className="remove-from-cart">
+                            <span
+                              className="icons"
+                              onClick={() => AddByOne(items)}
+                            >
+                              <IoIosArrowUp />
+                            </span>
+                            {/* <span onClick={() => removeFromCart(items)}>
                             remove
-                          </span>
-                          )
-                          <span className="quantity">
+                          </span> */}
+                            <span className="quantity">
+                              {` ${items.quantity}`}
+                            </span>
+                            <span
+                              className="icons"
+                              onClick={() => removeByOne(items)}
+                            >
+                              <IoIosArrowDown />
+                            </span>
+                            {/* <span className="quantity">
                             {items.quantity > 1 ? `X${items.quantity}` : ""}
-                          </span>
-                        </p>
+                          </span> */}
+                          </p>
+                        </div>
+
                         <ul>
                           <li>just right</li>
                           <li>cut</li>
