@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 interface InputValues {
@@ -11,8 +12,13 @@ interface InputValues {
   password: string;
   pass_confirmation: string;
 }
-const SignUp = () => {
+
+interface Props {
+  openLoginModal: () => void;
+}
+const SignUp: React.FC<Props> = ({ openLoginModal }) => {
   const { register, handleSubmit, reset } = useForm<InputValues>();
+  const history = useHistory();
 
   const onSubmit = (values: InputValues) => {
     const {
@@ -35,6 +41,8 @@ const SignUp = () => {
       .post(`${process.env.REACT_APP_API_URL}/api/register`, saveData)
       .then((res) => {
         console.log("response ", res.data);
+        history.push("/pizzas");
+        openLoginModal();
         reset();
       })
       .catch((err) => {
