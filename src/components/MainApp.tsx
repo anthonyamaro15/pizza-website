@@ -100,8 +100,7 @@ const MainApp = () => {
         />
       </Route>
 
-      <Route path="/new" exact>
-        <SignUp />
+      <Route path="/user/register" exact>
         <SecondNavbar
           openLoginModal={openLoginLModal}
           closeLoginModal={closeLoginModal}
@@ -109,6 +108,9 @@ const MainApp = () => {
           cartData={cartData}
           getItemsInCart={getItemsInCart}
         />
+        <NavRoutes />
+
+        <SignUp openLoginModal={openLoginLModal} />
       </Route>
       <Route path="/reset_password" exact>
         <ForgotPassword />

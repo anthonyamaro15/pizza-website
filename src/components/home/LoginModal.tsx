@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { useForm } from "react-hook-form";
@@ -34,9 +34,10 @@ const LoginModal: React.FC<Props> = ({
 }) => {
   const { register, handleSubmit, reset } = useForm<InputValues>();
   const history = useHistory();
+  const { path } = useRouteMatch();
 
   const redirect = () => {
-    history.push("/new");
+    history.push("/user/register");
     closeLoginModal();
   };
 
@@ -53,8 +54,13 @@ const LoginModal: React.FC<Props> = ({
         localStorage.setItem("client_token", JSON.stringify(res.data.token));
         localStorage.setItem("id", JSON.stringify(res.data.id));
         closeLoginModal();
-        window.location.reload(true);
+        history.push("/pizzas");
         reset();
+        if (res.data.user === "omar12@gmail.com") {
+          history.push("/admin/dashboard");
+        } else {
+          window.location.reload(true);
+        }
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -64,6 +70,7 @@ const LoginModal: React.FC<Props> = ({
   const signOut = () => {
     closeLoginModal();
     localStorage.clear();
+    history.push("/");
     window.location.reload(true);
   };
 
