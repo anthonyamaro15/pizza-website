@@ -1,9 +1,6 @@
 import React, { useState, useEffect, SetStateAction } from "react";
-import { Link } from "react-router-dom";
-import logo from "../../../../imgs/logo.png";
 import CheckoutCartModal from "../../CheckoutCartModal";
 import LoginModal from "../../LoginModal";
-import DeliveryModal from "../../DeliveryModal";
 import axios from "axios";
 
 interface ItemInformation {
@@ -78,13 +75,7 @@ const NavbarsMobile: React.FC<Props> = ({
   return (
     <div className="MobileNavbars">
       <div className="Navbar-wrapper">
-        {/* <Link to="/">
-          <img src={logo} alt="" />
-        </Link> */}
         <nav>
-          {/* <div className="btn-delivery btns">
-            <DeliveryModal user={user} />
-          </div> */}
           <div className="btn-login btns">
             <LoginModal
               open={open}
