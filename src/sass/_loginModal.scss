@@ -4,6 +4,20 @@
   display: flex;
   justify-content: space-between;
 
+  @media (max-width: $laptop) {
+    width: 99%;
+    padding: 2rem 2rem 1rem;
+    flex-direction: column;
+  }
+
+  @media (max-width: $laptop) {
+    width: 400px;
+  }
+
+  @media (max-width: $mobile) {
+    width: 90%;
+  }
+
   h3 {
     text-transform: uppercase;
     margin-bottom: 1rem;
@@ -34,6 +48,14 @@
   .LoginForm {
     width: 45%;
 
+    @media (max-width: $laptop) {
+      width: 90%;
+    }
+
+    @media (max-width: $mobile) {
+      width: 100%;
+    }
+
     button {
       padding: 0.7rem 1.2rem;
       border-radius: 30px;
@@ -49,11 +71,20 @@
       font-size: 0.9rem;
       color: #c62829;
       cursor: pointer;
+      @media (max-width: $mobile) {
+        display: block;
+        margin-top: 0.5rem;
+      }
     }
   }
 
   .SignUpForm {
     width: 43%;
+
+    @media (max-width: $laptop) {
+      width: 90%;
+      margin-top: 3rem;
+    }
 
     span {
       display: block;
@@ -81,6 +112,11 @@
 .logout-wrapper {
   width: 700px;
   padding: 3rem 2rem 1rem;
+
+  @media (max-width: $laptop) {
+    width: 99%;
+    padding: 2rem;
+  }
 
   .Logout {
     h3 {

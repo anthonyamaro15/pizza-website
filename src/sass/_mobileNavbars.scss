@@ -1,0 +1,24 @@
+.MobileNavbars {
+  .Navbar-wrapper {
+    background: rgb(12, 22, 27);
+    display: none;
+
+    @media (max-width: $laptop) {
+      display: block;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+
+      .btns {
+        button {
+          border: none;
+          background: none;
+          text-transform: capitalize;
+          color: white;
+        }
+      }
+    }
+  }
+}

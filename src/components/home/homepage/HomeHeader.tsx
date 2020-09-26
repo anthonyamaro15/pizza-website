@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { BsArrowRightShort } from "react-icons/bs";
+// import { BsArrowRightShort } from "react-icons/bs";
 import logo1 from "../../../imgs/logo1.png";
 
 const HomeHeader = () => {
@@ -18,9 +18,9 @@ const HomeHeader = () => {
           <div className="btn-container">
             <button type="submit" className="btn" onClick={redirect}>
               start my order now!
-              <span>
+              {/* <span>
                 <BsArrowRightShort />
-              </span>
+              </span> */}
             </button>
           </div>
         </div>

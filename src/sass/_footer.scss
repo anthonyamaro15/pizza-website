@@ -10,8 +10,31 @@
     padding: 6rem 0.5rem 3rem;
     justify-content: space-between;
 
+    @media (max-width: $desktop) {
+      width: 80%;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: $mobile) {
+      width: 90%;
+    }
+
+    //   @media (max-width: $desktop) {
+    //   width: 80%;
+    // }
+
     nav {
       width: 50%;
+
+      @media (max-width: $desktop) {
+        width: 80%;
+
+        margin: 0 auto 3rem;
+      }
+
+      @media (max-width: $mobile) {
+        width: 100%;
+      }
     }
 
     .web-links {
@@ -19,6 +42,10 @@
       justify-content: space-between;
       width: 350px;
       margin-bottom: 3rem;
+
+      @media (max-width: $desktop) {
+        width: 100%;
+      }
       span {
         margin-right: 2rem;
 
@@ -38,6 +65,16 @@
 
       width: 350px;
       text-align: center;
+
+      @media (max-width: $desktop) {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      @media (max-width: $mobile) {
+        flex-wrap: wrap;
+        flex-direction: column;
+      }
       a {
         display: block;
         margin-bottom: 1rem;
@@ -51,8 +88,16 @@
 
       color: white;
 
+      @media (max-width: $mobile) {
+        flex-wrap: wrap;
+      }
+
       .nation-wide {
         text-align: center;
+
+        @media (max-width: $mobile) {
+          margin-bottom: 3rem;
+        }
 
         img {
           width: 300px;
