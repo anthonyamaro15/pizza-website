@@ -6,6 +6,10 @@
   position: relative;
   background: rgba(0, 0, 0, 0.2);
 
+  @media (max-width: $mobile) {
+    height: 60vh;
+  }
+
   &:after {
     content: "";
     position: absolute;
@@ -66,6 +70,10 @@
           justify-content: center;
           margin-bottom: 3rem;
           //  text-transform: capitalize;
+          @media (max-width: $mobile) {
+            margin-bottom: 1rem;
+          }
+
           button {
             text-transform: capitalize;
 

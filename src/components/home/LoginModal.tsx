@@ -98,7 +98,7 @@ const LoginModal: React.FC<Props> = ({
   ) : (
     <div>
       <button className="login" onClick={openLoginModal}>
-        login <span className="inner-btn">or Create Account</span>
+        login <span className="inner-btn">/ Create Account</span>
       </button>
       <Modal open={open} onClose={closeLoginModal}>
         <div className="Forms-wrapper">

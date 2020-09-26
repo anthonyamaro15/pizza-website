@@ -1,5 +1,4 @@
 .HomeHeader {
-  //   border: 1px solid red;
   height: 66vh;
   position: relative;
   background: rgba(0, 0, 0, 0.6);
@@ -8,6 +7,10 @@
   //   background: url("../imgs/bgheader.jpg");
   //   z-index: 100;
   box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.8) inset;
+
+  @media (max-width: $laptop) {
+    height: 100%;
+  }
 
   &::after {
     content: "";
@@ -34,6 +37,19 @@
     display: flex;
     justify-content: space-between;
 
+    @media (max-width: $desktop) {
+      max-width: 80%;
+    }
+
+    @media (max-width: $laptop) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media (max-width: $mobile) {
+      width: 80%;
+    }
+
     //  border: 1px solid red;
 
     .title {
@@ -49,6 +65,10 @@
         margin-bottom: 1rem;
         letter-spacing: 4px;
         color: white;
+
+        @media (max-width: $mobile) {
+          font-size: 0.9rem;
+        }
       }
 
       h1 {
@@ -59,13 +79,26 @@
         letter-spacing: 5px;
         margin-bottom: 2rem;
         color: #c62829;
+
+        @media (max-width: $laptop) {
+          font-size: 5rem;
+        }
+
+        @media (max-width: $mobile) {
+          font-size: 3rem;
+          width: 100%;
+        }
       }
 
       .btn-container {
         width: 50%;
         margin: 0 auto;
+
+        @media (max-width: $mobile) {
+          width: 75%;
+        }
         .btn {
-          padding: 0.5rem 2rem;
+          padding: 1.5rem 2rem;
           // font-weight: bold;
           border-radius: 40px;
           background-color: #3396a9;
@@ -74,13 +107,23 @@
           border: none;
           outline: none;
           color: white;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+          //  display: flex;
+          //  justify-content: space-between;
+          //  align-items: center;
+          padding-top: -0.5rem;
 
           font-size: 1rem;
           cursor: pointer;
           font-weight: bold;
+
+          @media (max-width: $laptop) {
+            margin-bottom: 3rem;
+          }
+
+          @media (max-width: $mobile) {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+          }
 
           span {
             background: white;
@@ -104,6 +147,10 @@
       width: 300px;
       margin: 0 auto;
       text-align: center;
+
+      @media (max-width: $laptop) {
+        margin: 2rem auto;
+      }
     }
   }
 }

@@ -7,6 +7,14 @@
     max-width: 1350px;
     margin: 0 auto;
 
+    @media (max-width: $desktop) {
+      max-width: 80%;
+    }
+
+    @media (max-width: $laptop) {
+      display: none;
+    }
+
     nav {
       display: flex;
       justify-content: space-between;
@@ -64,6 +72,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.6rem 0.5rem;
+
+    @media (max-width: $desktop) {
+      max-width: 80%;
+    }
+
+    @media (max-width: $laptop) {
+      display: none;
+    }
 
     nav {
       display: flex;
@@ -126,6 +142,16 @@
   max-width: 1350px;
   margin: 0 auto 3rem;
 
+  @media (max-width: $laptop) {
+    width: 80%;
+  }
+
+  @media (max-width: $laptop) {
+    margin-top: 3rem;
+    width: 100%;
+    padding: 0;
+  }
+
   nav {
     a {
       margin-right: 1rem;
@@ -134,6 +160,10 @@
       color: #333;
       padding: 1.4rem 0.4rem;
       // letter-spacing: 1.2;
+
+      @media (max-width: $laptop) {
+        padding: 1rem 0.4rem;
+      }
     }
   }
   .active {

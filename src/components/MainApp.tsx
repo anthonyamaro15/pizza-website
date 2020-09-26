@@ -15,6 +15,8 @@ import OrderProgress from "./home/OrderProgress";
 import AdminDashboard from "./admin/AdminDashboard";
 import AdminSecondNavbar from "./admin/AdminSecondNavbar";
 
+import MobileNavbars from "./home/homepage/mobileComponents/NavbarsMobile";
+
 const MainApp = () => {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState({});
@@ -43,6 +45,7 @@ const MainApp = () => {
   useEffect(() => {
     if (id) {
       getItemsInCart();
+      console.log("what now");
     }
   }, [id]);
 
@@ -67,6 +70,13 @@ const MainApp = () => {
   return (
     <div>
       <FirstNavbar />
+      <MobileNavbars
+        openLoginModal={openLoginLModal}
+        closeLoginModal={closeLoginModal}
+        open={open}
+        cartData={cartData}
+        getItemsInCart={getItemsInCart}
+      />
 
       <Route path="/" exact>
         <SecondNavbar
