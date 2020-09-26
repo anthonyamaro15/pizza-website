@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import wing from "../../../imgs/wings.jpg";
 import testing from "../../../imgs/recipes.png";
 
 const HomeThirdContent = () => {

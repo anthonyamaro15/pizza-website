@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, useRouteMatch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { useForm } from "react-hook-form";
@@ -34,7 +34,6 @@ const LoginModal: React.FC<Props> = ({
 }) => {
   const { register, handleSubmit, reset } = useForm<InputValues>();
   const history = useHistory();
-  const { path } = useRouteMatch();
 
   const redirect = () => {
     history.push("/user/register");
