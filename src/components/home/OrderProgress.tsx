@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:4200");
+const socket = io(`${process.env.REACT_APP_API_URL}`);
 
 const OrderProgress = () => {
   const [status, setStatus] = useState("confirm");
-  const [progress, setProgress] = useState(false);
   const [orderComfirm, setOrderComfirm] = useState("");
   const [preparing, setPreparing] = useState("");
   const [outDevlivery, setOutDelivery] = useState("");
