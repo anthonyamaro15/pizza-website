@@ -20,6 +20,7 @@ const HomeThirdContent = () => {
           <img src={testing} alt="lemon wings" />
         </div>
       </section>
+      <div className="border-bottom"></div>
     </div>
   );
 };

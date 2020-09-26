@@ -1,6 +1,7 @@
 .FirstNavbar {
   background: #b82124;
   background: linear-gradient(#cf2b2e, #b82124);
+  box-shadow: 0px 20px 29px -14px rgba(191, 191, 191, 1);
 
   .Navbar-wrapper {
     max-width: 1350px;
@@ -11,6 +12,7 @@
       justify-content: space-between;
       // height: 5vh;
       padding: 1rem 0.5rem;
+      position: relative;
 
       .Links {
         display: flex;
@@ -41,6 +43,10 @@
         text-transform: uppercase;
         color: white;
         font-weight: 800;
+
+        position: absolute;
+        top: 7px;
+        right: 0;
       }
     }
   }
