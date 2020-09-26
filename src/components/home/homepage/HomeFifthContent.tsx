@@ -17,7 +17,7 @@ const HomeFifthContent = () => {
           </p>
           <Link to="/pizzas">ship a pizza</Link>
         </div>
-        <div className="img-wrapper">
+        <div className="img-wrapper shadow-pizza">
           <img src={pizza2} alt="lemon wings" />
         </div>
       </section>

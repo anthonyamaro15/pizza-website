@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "react-responsive-modal/styles.css";
+import { v4 as uuidv4 } from "uuid";
 import { Modal } from "react-responsive-modal";
 import { ImCart } from "react-icons/im";
 import CheckoutCartOptions from "./CheckoutCartOptions";
@@ -12,20 +13,6 @@ import { IoIosArrowUp } from "react-icons/io";
 import io from "socket.io-client";
 
 const socket = io("http://localhost:4200");
-
-// socket.on("connect", () => {
-//   console.log("connected to server");
-
-//   socket.emit("createMessage", { from: "anthony", text: "learning" });
-
-//   socket.on("disconnect", () => {
-//     console.log("user disconnected from server");
-//   });
-// });
-
-// socket.on("newMessage", (message: any) => {
-//   console.log("newMessage ", message);
-// });
 
 interface User {
   address: string;
@@ -65,6 +52,7 @@ const CheckoutCartModal: React.FC<Props> = ({
   cartData,
   user,
 }) => {
+  const [mealOptions, setMealOptions] = useState([]);
   const [open, setOpen] = React.useState(false);
   let [total, setTotal] = useState(0);
   let [subTo, setSubTo] = useState(0);
@@ -75,6 +63,17 @@ const CheckoutCartModal: React.FC<Props> = ({
     socket.on("connect", () => {
       console.log("connected to server");
     });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/cart/complete_meal`)
+      .then((res) => {
+        setMealOptions(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   useEffect(() => {
@@ -125,7 +124,7 @@ const CheckoutCartModal: React.FC<Props> = ({
   };
 
   const placeOrder = () => {
-    let token = "abc";
+    let token = uuidv4();
     history.push(`/order/${token}`);
     setOpen(false);
 
@@ -170,9 +169,7 @@ const CheckoutCartModal: React.FC<Props> = ({
                             >
                               <IoIosArrowUp />
                             </span>
-                            {/* <span onClick={() => removeFromCart(items)}>
-                            remove
-                          </span> */}
+
                             <span className="quantity">
                               {` ${items.quantity}`}
                             </span>
@@ -182,9 +179,6 @@ const CheckoutCartModal: React.FC<Props> = ({
                             >
                               <IoIosArrowDown />
                             </span>
-                            {/* <span className="quantity">
-                            {items.quantity > 1 ? `X${items.quantity}` : ""}
-                          </span> */}
                           </p>
                         </div>
 
@@ -201,7 +195,15 @@ const CheckoutCartModal: React.FC<Props> = ({
               <div className="make-meal-complete">
                 <h1>make your meal complete</h1>
                 <div className="show-choices">
-                  <CheckoutCartOptions />
+                  {mealOptions.map((meal: any) => (
+                    <CheckoutCartOptions
+                      key={meal.id}
+                      meal={meal}
+                      cartData={cartData}
+                      getItemsInCart={getItemsInCart}
+                      user={user}
+                    />
+                  ))}
                 </div>
               </div>
 

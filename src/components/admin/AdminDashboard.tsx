@@ -37,7 +37,7 @@ const AdminDashboard = () => {
           <div className="order-items shared">
             <h3>orders</h3>
             <div className="inner-item-wrapper">
-              <p>{token}</p>
+              <p className="token">{token}</p>
               {data.map((order: any) => (
                 <div key={order.id}>
                   <p>{order.name}</p>

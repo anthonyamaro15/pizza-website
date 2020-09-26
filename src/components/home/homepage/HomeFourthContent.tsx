@@ -21,6 +21,7 @@ const HomeFourthContent = () => {
           <Link to="/pizzas">join the lou's crew</Link>
         </div>
       </section>
+      <div className="border-bottom"></div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import box from "../../imgs/box.png";
 
 const FirstNavbar = () => {
   return (
@@ -16,7 +17,7 @@ const FirstNavbar = () => {
             <Link to="/catering">catering</Link>
           </div>
           <Link to="/" className="box">
-            box
+            <img src={box} alt="logo of pizza box" />
           </Link>
         </nav>
       </div>
