@@ -61,228 +61,246 @@ const Content: React.FC<Props> = ({
     (pizza) => pizza.category_name === "frozen_pizza"
   );
 
+  //   const mapThroughItems = (arr: ItemInformationAdd[]) => {
+  //     return arr?.map((val) => (
+  //       <SingleCardComponent
+  //         key={val.id}
+  //         val={val}
+  //         open={open}
+  //         openLoginModal={openLoginModal}
+  //         getItemsInCart={getItemsInCart}
+  //         cartData={cartData}
+  //       />
+  //     ));
+  //   };
+
   // check what the params are. so we know which component to render.
 
-  return cartData && category === "pizzas" ? (
-    <div className="Content">
-      <div className="Content-inner">
-        <h1>Deep dish pizza</h1>
-        <div className="items">
-          {deep_dish_pizza?.map((val) => (
-            <SingleCardComponent
-              key={val.id}
-              val={val}
-              open={open}
-              openLoginModal={openLoginModal}
-              getItemsInCart={getItemsInCart}
-              cartData={cartData}
-            />
-          ))}
+  //   const deep_dish_p = mapThroughItems(deep_dish_pizza);
+  return cartData.length ? (
+    category === "pizzas" ? (
+      <div className="Content">
+        <div className="Content-inner">
+          <h1>Deep dish pizza</h1>
+          <div className="items">
+            {deep_dish_pizza?.map((val) => (
+              <SingleCardComponent
+                key={val.id}
+                val={val}
+                open={open}
+                openLoginModal={openLoginModal}
+                getItemsInCart={getItemsInCart}
+                cartData={cartData}
+              />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="Content-inner">
-        <h1>thin crust pizza</h1>
-        <div className="items">
-          {thin_crust_pizza?.map((val) => (
-            <SingleCardComponent
-              key={val.id}
-              val={val}
-              open={open}
-              openLoginModal={openLoginModal}
-              getItemsInCart={getItemsInCart}
-              cartData={cartData}
-            />
-          ))}
+        <div className="Content-inner">
+          <h1>thin crust pizza</h1>
+          <div className="items">
+            {thin_crust_pizza?.map((val) => (
+              <SingleCardComponent
+                key={val.id}
+                val={val}
+                open={open}
+                openLoginModal={openLoginModal}
+                getItemsInCart={getItemsInCart}
+                cartData={cartData}
+              />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="Content-inner">
-        <h1>speciality pizza</h1>
-        <div className="items">
-          {speciality_pizza?.map((val) => (
-            <SingleCardComponent
-              key={val.id}
-              val={val}
-              open={open}
-              openLoginModal={openLoginModal}
-              getItemsInCart={getItemsInCart}
-              cartData={cartData}
-            />
-          ))}
+        <div className="Content-inner">
+          <h1>speciality pizza</h1>
+          <div className="items">
+            {speciality_pizza?.map((val) => (
+              <SingleCardComponent
+                key={val.id}
+                val={val}
+                open={open}
+                openLoginModal={openLoginModal}
+                getItemsInCart={getItemsInCart}
+                cartData={cartData}
+              />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="Content-inner">
-        <h1>frozen pizza</h1>
-        <div className="items">
-          {frozen_pizza?.map((val) => (
-            <SingleCardComponent
-              key={val.id}
-              val={val}
-              open={open}
-              openLoginModal={openLoginModal}
-              getItemsInCart={getItemsInCart}
-              cartData={cartData}
-            />
-          ))}
+        <div className="Content-inner">
+          <h1>frozen pizza</h1>
+          <div className="items">
+            {frozen_pizza?.map((val) => (
+              <SingleCardComponent
+                key={val.id}
+                val={val}
+                open={open}
+                openLoginModal={openLoginModal}
+                getItemsInCart={getItemsInCart}
+                cartData={cartData}
+              />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="Content-inner">
-        <h1>popular combos</h1>
-        <div className="items">
-          {combos?.map((val) => (
-            <SingleCardComponent
-              key={val.id}
-              val={val}
-              open={open}
-              openLoginModal={openLoginModal}
-              getItemsInCart={getItemsInCart}
-              cartData={cartData}
-            />
-          ))}
+        <div className="Content-inner">
+          <h1>popular combos</h1>
+          <div className="items">
+            {combos?.map((val) => (
+              <SingleCardComponent
+                key={val.id}
+                val={val}
+                open={open}
+                openLoginModal={openLoginModal}
+                getItemsInCart={getItemsInCart}
+                cartData={cartData}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    ) : (
+      <div className="Content">
+        {category === "salads" && (
+          <div className="Content-inner">
+            <div className="items">
+              {salads?.map((val: ItemInformationAdd) => (
+                <SingleCardComponent
+                  key={val.id}
+                  val={val}
+                  open={open}
+                  openLoginModal={openLoginModal}
+                  getItemsInCart={getItemsInCart}
+                  cartData={cartData}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {category === "appetizers" && (
+          <div className="Content-inner">
+            <div className="items">
+              {appetizers?.map((val: ItemInformationAdd) => (
+                <SingleCardComponent
+                  key={val.id}
+                  val={val}
+                  open={open}
+                  openLoginModal={openLoginModal}
+                  getItemsInCart={getItemsInCart}
+                  cartData={cartData}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {category === "pastas" && (
+          <div className="Content-inner">
+            <div className="items">
+              {pastas?.map((val: ItemInformationAdd) => (
+                <SingleCardComponent
+                  key={val.id}
+                  val={val}
+                  open={open}
+                  openLoginModal={openLoginModal}
+                  getItemsInCart={getItemsInCart}
+                  cartData={cartData}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {category === "combos" && (
+          <div className="Content-inner">
+            <div className="items">
+              {combos?.map((val: ItemInformationAdd) => (
+                <SingleCardComponent
+                  key={val.id}
+                  val={val}
+                  open={open}
+                  openLoginModal={openLoginModal}
+                  getItemsInCart={getItemsInCart}
+                  cartData={cartData}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {category === "sandwiches" && (
+          <div className="Content-inner">
+            <div className="items">
+              {sandwiches?.map((val: ItemInformationAdd) => (
+                <SingleCardComponent
+                  key={val.id}
+                  val={val}
+                  open={open}
+                  openLoginModal={openLoginModal}
+                  getItemsInCart={getItemsInCart}
+                  cartData={cartData}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {category === "desserts" && (
+          <div className="Content-inner">
+            <div className="items">
+              {desserts?.map((val: ItemInformationAdd) => (
+                <SingleCardComponent
+                  key={val.id}
+                  val={val}
+                  open={open}
+                  openLoginModal={openLoginModal}
+                  getItemsInCart={getItemsInCart}
+                  cartData={cartData}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {category === "drinks" && (
+          <div className="Content-inner">
+            <div className="items">
+              {drinks?.map((val: ItemInformationAdd) => (
+                <SingleCardComponent
+                  key={val.id}
+                  val={val}
+                  open={open}
+                  openLoginModal={openLoginModal}
+                  getItemsInCart={getItemsInCart}
+                  cartData={cartData}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {category === "extras" && (
+          <div className="Content-inner">
+            <div className="items">
+              {extrass?.map((val: ItemInformationAdd) => (
+                <SingleCardComponent
+                  key={val.id}
+                  val={val}
+                  open={open}
+                  openLoginModal={openLoginModal}
+                  getItemsInCart={getItemsInCart}
+                  cartData={cartData}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    )
   ) : (
-    <div className="Content">
-      {category === "salads" && (
-        <div className="Content-inner">
-          <div className="items">
-            {salads?.map((val: ItemInformationAdd) => (
-              <SingleCardComponent
-                key={val.id}
-                val={val}
-                open={open}
-                openLoginModal={openLoginModal}
-                getItemsInCart={getItemsInCart}
-                cartData={cartData}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {category === "appetizers" && (
-        <div className="Content-inner">
-          <div className="items">
-            {appetizers?.map((val: ItemInformationAdd) => (
-              <SingleCardComponent
-                key={val.id}
-                val={val}
-                open={open}
-                openLoginModal={openLoginModal}
-                getItemsInCart={getItemsInCart}
-                cartData={cartData}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {category === "pastas" && (
-        <div className="Content-inner">
-          <div className="items">
-            {pastas?.map((val: ItemInformationAdd) => (
-              <SingleCardComponent
-                key={val.id}
-                val={val}
-                open={open}
-                openLoginModal={openLoginModal}
-                getItemsInCart={getItemsInCart}
-                cartData={cartData}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {category === "combos" && (
-        <div className="Content-inner">
-          <div className="items">
-            {combos?.map((val: ItemInformationAdd) => (
-              <SingleCardComponent
-                key={val.id}
-                val={val}
-                open={open}
-                openLoginModal={openLoginModal}
-                getItemsInCart={getItemsInCart}
-                cartData={cartData}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {category === "sandwiches" && (
-        <div className="Content-inner">
-          <div className="items">
-            {sandwiches?.map((val: ItemInformationAdd) => (
-              <SingleCardComponent
-                key={val.id}
-                val={val}
-                open={open}
-                openLoginModal={openLoginModal}
-                getItemsInCart={getItemsInCart}
-                cartData={cartData}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {category === "desserts" && (
-        <div className="Content-inner">
-          <div className="items">
-            {desserts?.map((val: ItemInformationAdd) => (
-              <SingleCardComponent
-                key={val.id}
-                val={val}
-                open={open}
-                openLoginModal={openLoginModal}
-                getItemsInCart={getItemsInCart}
-                cartData={cartData}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {category === "drinks" && (
-        <div className="Content-inner">
-          <div className="items">
-            {drinks?.map((val: ItemInformationAdd) => (
-              <SingleCardComponent
-                key={val.id}
-                val={val}
-                open={open}
-                openLoginModal={openLoginModal}
-                getItemsInCart={getItemsInCart}
-                cartData={cartData}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {category === "extras" && (
-        <div className="Content-inner">
-          <div className="items">
-            {extrass?.map((val: ItemInformationAdd) => (
-              <SingleCardComponent
-                key={val.id}
-                val={val}
-                open={open}
-                openLoginModal={openLoginModal}
-                getItemsInCart={getItemsInCart}
-                cartData={cartData}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
+    <h2 className="loading">Please Wait Heroku is Waking Up</h2>
   );
 };
 
