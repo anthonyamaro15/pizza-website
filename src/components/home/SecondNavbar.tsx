@@ -1,4 +1,5 @@
 import React, { useState, useEffect, SetStateAction } from "react";
+import { ItemInformation, User } from "../../interfaces/ShareInterfaces";
 import { Link } from "react-router-dom";
 import logo from "../../imgs/logo.png";
 import CheckoutCartModal from "./CheckoutCartModal";
@@ -6,39 +7,12 @@ import LoginModal from "./LoginModal";
 import DeliveryModal from "./DeliveryModal";
 import axios from "axios";
 
-interface ItemInformation {
-  category: string;
-  category_name: string;
-  cheese: string;
-  description: string;
-  dressing: any;
-  price: number;
-  quantity: number;
-  user_id: number;
-  id: number;
-  name: string;
-  img_url: string;
-  peppers: any;
-  sauce: any;
-  side: string;
-  size_price: any;
-}
-
 interface Props {
   open: boolean;
   openLoginModal: () => void;
   closeLoginModal: () => void;
   getItemsInCart: () => void;
   cartData: ItemInformation[];
-}
-
-interface User {
-  address: string;
-  first_name: string;
-  last_name: string;
-  id: number;
-  email: string;
-  phone_number: string;
 }
 
 const SecondNavbar: React.FC<Props> = ({

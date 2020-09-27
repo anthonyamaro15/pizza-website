@@ -1,18 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { User } from "../../interfaces/ShareInterfaces";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-
-interface User {
-  address: string;
-  first_name: string;
-  last_name: string;
-  id: number;
-  email: string;
-  phone_number: string;
-}
 
 interface Props {
   open: boolean;
