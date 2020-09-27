@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ItemInformation, User } from "../../interfaces/ShareInterfaces";
 import { useForm } from "react-hook-form";
 import { BsArrowRightShort } from "react-icons/bs";
 import axios from "axios";
@@ -6,32 +7,6 @@ import axios from "axios";
 interface Inputs {
   size: string;
   quantity: number;
-}
-
-interface ItemInformation {
-  category: string;
-  category_name: string;
-  cheese: string;
-  description: string;
-  dressing: any;
-  price: number;
-  quantity: number;
-  user_id: number;
-  id: number;
-  name: string;
-  img_url: string;
-  peppers: any;
-  sauce: any;
-  side: string;
-  size_price: any;
-}
-interface User {
-  address: string;
-  first_name: string;
-  last_name: string;
-  id: number;
-  email: string;
-  phone_number: string;
 }
 
 interface Props {

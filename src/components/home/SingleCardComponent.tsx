@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ItemInformation } from "../../interfaces/ShareInterfaces";
 import { SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import { BsArrowRightShort } from "react-icons/bs";
@@ -9,7 +10,7 @@ interface Inputs {
   quantity: number;
 }
 
-interface ItemInformation {
+interface ItemInformationRecieved {
   category?: string;
   category_name?: string;
   cheese?: string;
@@ -24,30 +25,12 @@ interface ItemInformation {
   size_price?: any;
 }
 
-interface UserCart {
-  category: string;
-  category_name: string;
-  cheese: string;
-  description: string;
-  dressing: any;
-  price: number;
-  quantity: number;
-  user_id: number;
-  id: number;
-  name: string;
-  img_url: string;
-  peppers: any;
-  sauce: any;
-  side: string;
-  size_price: any;
-}
-
 interface Props {
   open: boolean;
   openLoginModal: () => void;
-  val: ItemInformation;
+  val: ItemInformationRecieved;
   getItemsInCart: () => void;
-  cartData: UserCart[];
+  cartData: ItemInformation[];
 }
 
 const SingleCardComponent: React.FC<Props> = ({

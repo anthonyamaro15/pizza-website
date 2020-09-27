@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { User } from "../../interfaces/ShareInterfaces";
 import io from "socket.io-client";
 
 const socket = io(`${process.env.REACT_APP_API_URL}`);
-
-interface User {
-  address: string;
-  first_name: string;
-  last_name: string;
-  id: number;
-  email: string;
-  phone_number: string;
-}
 
 const AdminDashboard = () => {
   const [data, setData] = useState([]);

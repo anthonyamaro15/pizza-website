@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { ItemInformation, User } from "../../interfaces/ShareInterfaces";
 import "react-responsive-modal/styles.css";
 import { v4 as uuidv4 } from "uuid";
 import { Modal } from "react-responsive-modal";
@@ -13,33 +14,6 @@ import { IoIosArrowUp } from "react-icons/io";
 import io from "socket.io-client";
 
 const socket = io(`${process.env.REACT_APP_API_URL}`);
-
-interface User {
-  address: string;
-  first_name: string;
-  last_name: string;
-  id: number;
-  email: string;
-  phone_number: string;
-}
-
-interface ItemInformation {
-  category: string;
-  category_name: string;
-  cheese: string;
-  description: string;
-  dressing: any;
-  price: number;
-  quantity: number;
-  user_id: number;
-  id: number;
-  name: string;
-  img_url: string;
-  peppers: any;
-  sauce: any;
-  side: string;
-  size_price: any;
-}
 
 interface Props {
   getItemsInCart: () => void;

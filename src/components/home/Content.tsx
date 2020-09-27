@@ -1,50 +1,21 @@
 import React from "react";
 import SingleCardComponent from "./SingleCardComponent";
 import { useParams } from "react-router-dom";
-
-interface ItemInformation {
-  category: string;
-  category_name: string;
-  cheese: string;
-  description: string;
-  dressing: any;
-  id: number;
-  name: string;
-  img_url: string;
-  peppers: any;
-  sauce: any;
-  side: string;
-  size_price: any;
-}
-
-interface UserCart {
-  category: string;
-  category_name: string;
-  cheese: string;
-  description: string;
-  dressing: any;
-  price: number;
-  quantity: number;
-  user_id: number;
-  id: number;
-  name: string;
-  img_url: string;
-  peppers: any;
-  sauce: any;
-  side: string;
-  size_price: any;
-}
+import {
+  ItemInformationAdd,
+  ItemInformation,
+} from "../../interfaces/ShareInterfaces";
 
 interface Values {
-  appetizers?: ItemInformation[];
-  combos?: ItemInformation[];
-  desserts?: ItemInformation[];
-  drinks?: ItemInformation[];
-  extrass?: ItemInformation[];
-  pastas?: ItemInformation[];
-  pizzas?: ItemInformation[];
-  salads?: ItemInformation[];
-  sandwiches?: ItemInformation[];
+  appetizers?: ItemInformationAdd[];
+  combos?: ItemInformationAdd[];
+  desserts?: ItemInformationAdd[];
+  drinks?: ItemInformationAdd[];
+  extrass?: ItemInformationAdd[];
+  pastas?: ItemInformationAdd[];
+  pizzas?: ItemInformationAdd[];
+  salads?: ItemInformationAdd[];
+  sandwiches?: ItemInformationAdd[];
 }
 
 interface Props {
@@ -52,7 +23,7 @@ interface Props {
   openLoginModal: () => void;
   data: Values;
   getItemsInCart: () => void;
-  cartData: UserCart[];
+  cartData: ItemInformation[];
 }
 
 const Content: React.FC<Props> = ({
@@ -179,7 +150,7 @@ const Content: React.FC<Props> = ({
       {category === "salads" && (
         <div className="Content-inner">
           <div className="items">
-            {salads?.map((val: ItemInformation) => (
+            {salads?.map((val: ItemInformationAdd) => (
               <SingleCardComponent
                 key={val.id}
                 val={val}
@@ -196,7 +167,7 @@ const Content: React.FC<Props> = ({
       {category === "appetizers" && (
         <div className="Content-inner">
           <div className="items">
-            {appetizers?.map((val: ItemInformation) => (
+            {appetizers?.map((val: ItemInformationAdd) => (
               <SingleCardComponent
                 key={val.id}
                 val={val}
@@ -213,7 +184,7 @@ const Content: React.FC<Props> = ({
       {category === "pastas" && (
         <div className="Content-inner">
           <div className="items">
-            {pastas?.map((val: ItemInformation) => (
+            {pastas?.map((val: ItemInformationAdd) => (
               <SingleCardComponent
                 key={val.id}
                 val={val}
@@ -230,7 +201,7 @@ const Content: React.FC<Props> = ({
       {category === "combos" && (
         <div className="Content-inner">
           <div className="items">
-            {combos?.map((val: ItemInformation) => (
+            {combos?.map((val: ItemInformationAdd) => (
               <SingleCardComponent
                 key={val.id}
                 val={val}
@@ -247,7 +218,7 @@ const Content: React.FC<Props> = ({
       {category === "sandwiches" && (
         <div className="Content-inner">
           <div className="items">
-            {sandwiches?.map((val: ItemInformation) => (
+            {sandwiches?.map((val: ItemInformationAdd) => (
               <SingleCardComponent
                 key={val.id}
                 val={val}
@@ -264,7 +235,7 @@ const Content: React.FC<Props> = ({
       {category === "desserts" && (
         <div className="Content-inner">
           <div className="items">
-            {desserts?.map((val: ItemInformation) => (
+            {desserts?.map((val: ItemInformationAdd) => (
               <SingleCardComponent
                 key={val.id}
                 val={val}
@@ -281,7 +252,7 @@ const Content: React.FC<Props> = ({
       {category === "drinks" && (
         <div className="Content-inner">
           <div className="items">
-            {drinks?.map((val: ItemInformation) => (
+            {drinks?.map((val: ItemInformationAdd) => (
               <SingleCardComponent
                 key={val.id}
                 val={val}
@@ -298,7 +269,7 @@ const Content: React.FC<Props> = ({
       {category === "extras" && (
         <div className="Content-inner">
           <div className="items">
-            {extrass?.map((val: ItemInformation) => (
+            {extrass?.map((val: ItemInformationAdd) => (
               <SingleCardComponent
                 key={val.id}
                 val={val}
