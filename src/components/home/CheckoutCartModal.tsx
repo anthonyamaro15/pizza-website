@@ -113,7 +113,7 @@ const CheckoutCartModal: React.FC<Props> = ({
       .delete(
         `${process.env.REACT_APP_API_URL}/api/cart/remove_cart_items/${user[0].id}`
       )
-      .then((res) => {
+      .then(() => {
         getItemsInCart();
       })
       .catch((err) => {
