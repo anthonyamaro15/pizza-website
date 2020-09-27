@@ -108,6 +108,17 @@ const CheckoutCartModal: React.FC<Props> = ({
       user: user[0],
       createdAt: new Date().toLocaleTimeString(),
     });
+
+    axios
+      .delete(
+        `${process.env.REACT_APP_API_URL}/api/cart/remove_cart_items/${user[0].id}`
+      )
+      .then((res) => {
+        getItemsInCart();
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
   };
 
   let tax = (8.25 * total) / 100;
