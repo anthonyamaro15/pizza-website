@@ -28,12 +28,12 @@ const ForgotPassword = () => {
     <div className="SignUp">
       <h1>password reset</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="email">
+        <label htmlFor="forgot_email">
           email
           <input
             type="email"
             name="email"
-            id="email"
+            id="forgot_email"
             placeholder="lou@malnati.com"
             ref={register({ required: true })}
           />

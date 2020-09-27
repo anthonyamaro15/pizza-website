@@ -38,12 +38,12 @@ const ResetPassword = () => {
     <div className="SignUp">
       <h1>enter new password</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="password">
+        <label htmlFor="reset_password">
           password
           <input
             type="password"
             name="password"
-            id="password"
+            id="reset_password"
             ref={register({ required: true })}
           />
         </label>

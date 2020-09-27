@@ -97,23 +97,23 @@ const LoginModal: React.FC<Props> = ({
           <div className="LoginForm">
             <h3>login</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <label htmlFor="firstName">
+              <label htmlFor="login_email">
                 email
                 <input
                   type="email"
                   name="email"
-                  id="email"
+                  id="login_email"
                   placeholder="lou@malnatis.com"
                   ref={register}
                 />
               </label>
 
-              <label htmlFor="lastName">
+              <label htmlFor="login_password">
                 password
                 <input
                   type="password"
                   name="password"
-                  id="password"
+                  id="login_password"
                   ref={register}
                 />
               </label>

@@ -7,7 +7,7 @@
   }
 
   @media (max-width: $laptop) {
-    width: 400px;
+    width: 520px;
   }
 
   @media (max-width: $mobile) {
@@ -135,7 +135,7 @@
       border-top: 1px solid rgb(221, 221, 221);
       text-align: center;
     }
-    @media (max-width: $mobile) {
+    @media (max-width: $laptop) {
       display: none;
     }
   }
