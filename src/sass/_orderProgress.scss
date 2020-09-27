@@ -1,6 +1,4 @@
 .OrderProgress {
-  //   border: 1px solid red;
-
   padding: 0rem 2rem 2rem;
   margin: 4rem 0 7rem;
   background: #fff;
@@ -10,9 +8,7 @@
     margin: 0 auto;
 
     .status-id {
-      display: flex;
-      // border: 1px solid red;
-      justify-content: space-between;
+      @include flex(space-around);
       align-items: center;
 
       @media (max-width: $laptop) {
@@ -33,8 +29,6 @@
       }
 
       p {
-        //   color: rgb(24, 167, 24);
-
         span {
           background: rgb(240, 238, 238);
           padding: 0.3rem 1rem;
@@ -45,16 +39,12 @@
     }
 
     .progress {
-      // border: 1px solid red;
-      // width: 50%;
       margin-top: 5rem;
 
       .display {
-        //   border: 1px solid blue;
         padding: 0.5rem 0;
         margin-bottom: 0.5rem;
-        display: flex;
-        justify-content: space-around;
+        @include flex(space-around);
         text-align: center;
         align-items: center;
         font-size: 1.1rem;
@@ -62,13 +52,10 @@
         font-weight: bold;
 
         p {
-          //  border: 1px solid green;
-
           width: 50%;
         }
 
         span {
-          //  border: 1px solid brown;
           width: 50%;
           font-weight: normal;
           font-size: 1rem;

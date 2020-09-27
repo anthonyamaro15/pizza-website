@@ -11,7 +11,8 @@
   }
 
   @media (max-width: $mobile) {
-    width: 90%;
+    width: 100%;
+    padding: 3rem 1rem 2rem;
   }
 
   .empty-cart {
@@ -27,6 +28,10 @@
       justify-content: space-between;
       margin-bottom: 0.5rem;
 
+      @media (max-width: $mobile) {
+        width: 100%;
+      }
+
       .img-wrapper {
         display: flex;
 
@@ -39,6 +44,10 @@
           margin-left: 1rem;
           //  border: 1px solid red;
           width: 100%;
+
+          @media (max-width: $mobile) {
+            margin-left: 0.5rem;
+          }
           .name-wrapper {
             display: flex;
 
@@ -56,6 +65,10 @@
               font-size: 0.9rem;
               font-weight: 900;
 
+              @media (max-width: $mobile) {
+                font-size: 0.8rem;
+              }
+
               span {
                 font-weight: normal;
                 text-transform: none;
@@ -68,6 +81,10 @@
               .icons {
                 font-size: 1.2rem;
                 cursor: pointer;
+
+                @media (max-width: $mobile) {
+                  font-size: 1.1rem;
+                }
               }
 
               .quantity {
@@ -98,6 +115,10 @@
       .price {
         font-weight: bold;
         //   border: 1px solid green;
+
+        @media (max-width: $mobile) {
+          font-size: 0.9rem;
+        }
       }
     }
   }
@@ -113,6 +134,9 @@
       color: #aaa;
       border-top: 1px solid rgb(221, 221, 221);
       text-align: center;
+    }
+    @media (max-width: $mobile) {
+      display: none;
     }
   }
 

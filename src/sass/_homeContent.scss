@@ -1,18 +1,10 @@
 .HomeContent {
-  //   .border-one {
-  //     //  border: 1px solid red;
-
-  //     //  .border-two {
-  //     //    // border-bottom: 1px solid green;
-  //     //  }
-  //   }
   .content-wrapper {
     max-width: 1350px;
     margin: 0 auto;
     padding: 7rem 0.5rem 5rem;
 
-    display: flex;
-    justify-content: space-around;
+    @include flex(space-around);
 
     @media (max-width: $desktop) {
       width: 80%;
@@ -26,10 +18,9 @@
       width: 90%;
     }
     .item-desc {
-      display: flex;
+      @include flex(center);
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       width: 45%;
 
       @media (max-width: $laptop) {

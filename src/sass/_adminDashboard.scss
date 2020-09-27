@@ -6,11 +6,9 @@
     height: 30vh;
 
     .order-information {
-      display: flex;
-      justify-content: space-between;
+      @include flex(space-between);
 
       .shared {
-        //   border: 1px solid blue;
         border: 1px solid rgb(219, 219, 219);
 
         &:nth-child(2) {

@@ -4,14 +4,13 @@
     margin: 0 auto;
     form {
       max-width: 600px;
-      // margin: 0 auto;
 
       label {
         display: block;
         font-size: 0.8rem;
         font-weight: bold;
         text-transform: capitalize;
-        color: #c62829;
+        color: $red;
 
         width: 80%;
         input {
@@ -34,8 +33,6 @@
       }
 
       select {
-        outline: none;
-        cursor: pointer;
         padding: 0.4rem 0.3rem;
         text-transform: capitalize;
         margin-top: 0.5rem;
@@ -51,7 +48,7 @@
         font-weight: bold;
         text-transform: capitalize;
         border: none;
-        background: #c62829;
+        background: red;
         color: white;
       }
     }

@@ -20,10 +20,10 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     socket.on("send-order", (order: any) => {
-      setData(order.cartData);
-      setToken(order.token);
-      setUser(order.user);
-      setPlaced(order.createdAt);
+      setData(order.order.cartData);
+      setToken(order.order.token);
+      setUser(order.order.user);
+      setPlaced(order.order.createdAt);
     });
   }, []);
 
