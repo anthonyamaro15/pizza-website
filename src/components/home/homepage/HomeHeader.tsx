@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-// import { BsArrowRightShort } from "react-icons/bs";
 import logo1 from "../../../imgs/logo1.png";
 
 const HomeHeader = () => {
@@ -18,14 +17,14 @@ const HomeHeader = () => {
           <div className="btn-container">
             <button type="submit" className="btn" onClick={redirect}>
               start my order now!
-              {/* <span>
-                <BsArrowRightShort />
-              </span> */}
             </button>
           </div>
         </div>
         <div className="restaurant-description">
-          <img src={logo1} alt="hahahahaahhahaahahhahah" />
+          <img
+            src={logo1}
+            alt="simple a logo displaying information about shipping pizza"
+          />
         </div>
       </header>
     </div>
