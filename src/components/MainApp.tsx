@@ -45,7 +45,6 @@ const MainApp = () => {
   useEffect(() => {
     if (id) {
       getItemsInCart();
-      console.log("what now");
     }
   }, [id]);
 

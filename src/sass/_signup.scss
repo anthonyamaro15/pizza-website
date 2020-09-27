@@ -23,14 +23,14 @@
       font-weight: bold;
       text-transform: capitalize;
       border: none;
-      background: #c62829;
+      background: $red;
       color: white;
     }
   }
 
   .share-clss {
-    display: flex;
-    justify-content: space-between;
+    @include flex(space-between);
+
     label {
       width: 49%;
       input {
@@ -44,8 +44,9 @@
     font-weight: bold;
     text-transform: capitalize;
     font-size: 0.8rem;
-    color: #c62829;
+    color: $red;
     width: 49%;
+
     input {
       width: 100%;
       display: block;
@@ -56,7 +57,6 @@
       border: 1px solid grey;
       border: none;
       background: rgb(236, 235, 235);
-      outline: none;
       box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2) inset;
     }
   }
@@ -70,7 +70,6 @@
 
   .LoginForm {
     width: 45%;
-    //  border: 1px solid red;
 
     button {
       padding: 0.7rem 1.2rem;
@@ -78,14 +77,14 @@
       font-weight: bold;
       text-transform: capitalize;
       border: none;
-      background: #c62829;
+      background: $red;
       color: white;
     }
 
     .forgot-pass {
       margin-left: 1rem;
       font-size: 0.9rem;
-      color: #c62829;
+      color: $red;
       cursor: pointer;
     }
   }
@@ -106,7 +105,7 @@
       font-weight: bold;
       text-transform: capitalize;
       border: none;
-      background: #c62829;
+      background: $red;
       color: white;
       margin-top: 0.3rem;
       cursor: pointer;

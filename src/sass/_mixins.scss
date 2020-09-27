@@ -1,0 +1,11 @@
+@mixin flex($justify) {
+  display: flex;
+  justify-content: $justify;
+}
+
+@mixin bgIimgProps($img) {
+  background: url($img);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

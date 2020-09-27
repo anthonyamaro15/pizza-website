@@ -3,7 +3,6 @@
     max-width: 1350px;
     margin: 0 auto;
     padding: 0 0.5rem;
-    //  border: 1px solid blue;
 
     @media (max-width: $desktop) {
       width: 80%;
@@ -30,7 +29,6 @@
     .items {
       display: flex;
       flex-wrap: wrap;
-      // justify-content: space-around;
 
       @media (max-width: $desktop) {
         justify-content: center;
@@ -44,7 +42,6 @@
   width: 300px;
   background: white;
   margin-bottom: 1rem;
-  //   height: 100%;
   margin-right: 2rem;
 
   @media (max-width: $desktop) {
@@ -53,15 +50,11 @@
   }
 
   @media (max-width: $laptop) {
-    //  display: flex;
-    //  flex-direction: row;
     width: 100%;
-    //  border: 1px solid red;
     display: flex;
   }
 
   .img-wrapper {
-    //  width: 100%;
     height: 230px;
 
     img {
@@ -76,19 +69,14 @@
   }
 
   .space-between {
-    //  border: 1px solid blue;
-    display: flex;
+    @include flex(space-between);
     flex-direction: column;
-    justify-content: space-between;
     position: relative;
-    //  height: 23vh;
-    //  align-content: space-between;
   }
 
   .item-information {
-    //  border: 1px solid red;
-
     padding: 1rem;
+
     h3 {
       text-transform: uppercase;
       margin-bottom: 0.5rem;
@@ -104,30 +92,22 @@
   }
 
   .lower-content {
-    display: flex;
-    justify-content: flex-end;
+    @include flex(flex-end);
     align-items: flex-end;
     padding: 1rem;
-    //  border: 1px solid red;
 
     .btn {
-      border: 1px solid red;
       padding: 0.5rem 1rem;
-      // font-weight: bold;
       border-radius: 30px;
       background-color: #3396a9;
       background: linear-gradient(135deg, #29a8be 0%, #3495a7 100%);
-
       border: none;
       outline: none;
       color: white;
       display: flex;
       align-items: center;
       font-size: 0.9rem;
-      cursor: pointer;
-      // position: absolute;
-      // bottom: 1rem;
-      // right: 1rem;
+
       span {
         background: white;
         color: #333;
@@ -141,8 +121,7 @@
     }
 
     .add-to-cart {
-      display: flex;
-      justify-content: flex-end;
+      @include flex(flex-end);
 
       label {
         display: block;

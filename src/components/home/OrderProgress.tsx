@@ -14,7 +14,6 @@ const OrderProgress = () => {
 
   useEffect(() => {
     socket.on("send-status", (order: string) => {
-      console.log("please work  ", order);
       if (order === "confirm_order") {
         setOrderComfirm(order);
         setStatus("");

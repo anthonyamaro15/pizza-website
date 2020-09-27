@@ -4,8 +4,6 @@
   background: rgba(0, 0, 0, 0.6);
   background: rgba(12, 23, 29, 0.8);
 
-  //   background: url("../imgs/bgheader.jpg");
-  //   z-index: 100;
   box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.8) inset;
 
   @media (max-width: $laptop) {
@@ -20,22 +18,14 @@
     top: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.6);
-    background: url("../imgs/bgheader.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    //  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.8) inset;
-
+    @include bgIimgProps("../imgs/bgheader.jpg");
     z-index: -1;
   }
   header {
     max-width: 1350px;
     padding: 4rem 0.5rem 0;
-
     margin: 0 auto;
-    //  z-index: 20;
-    display: flex;
-    justify-content: space-between;
+    @include flex(space-between);
 
     @media (max-width: $desktop) {
       max-width: 80%;
@@ -50,14 +40,10 @@
       width: 80%;
     }
 
-    //  border: 1px solid red;
-
     .title {
-      // border: 1px solid red;
       text-align: center;
 
       span {
-        //   border: 1px solid blue;
         display: inline-block;
         text-transform: uppercase;
         font-weight: bold;
@@ -99,19 +85,13 @@
         }
         .btn {
           padding: 1.5rem 2rem;
-          // font-weight: bold;
           border-radius: 40px;
           background-color: #3396a9;
           background: linear-gradient(135deg, #29a8be 0%, #3495a7 100%);
           text-transform: capitalize;
           border: none;
-          outline: none;
           color: white;
-          //  display: flex;
-          //  justify-content: space-between;
-          //  align-items: center;
           padding-top: -0.5rem;
-
           font-size: 1rem;
           cursor: pointer;
           font-weight: bold;
@@ -135,14 +115,12 @@
             font-size: 1.5rem;
             padding: 0.5rem 0.5rem 0;
             font-weight: bold;
-            //  border: 1px solid red;
           }
         }
       }
     }
 
     .restaurant-description {
-      // border: 1px solid red;
       background: white;
       width: 300px;
       margin: 0 auto;

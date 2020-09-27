@@ -1,14 +1,12 @@
 .Footer {
-  //   border: 1px solid red;
   margin-top: 5rem;
   background: rgb(12, 23, 29);
 
   footer {
     max-width: 1300px;
     margin: 0 auto;
-    display: flex;
+    @include flex(space-between);
     padding: 6rem 0.5rem 3rem;
-    justify-content: space-between;
 
     @media (max-width: $desktop) {
       width: 80%;
@@ -18,10 +16,6 @@
     @media (max-width: $mobile) {
       width: 90%;
     }
-
-    //   @media (max-width: $desktop) {
-    //   width: 80%;
-    // }
 
     nav {
       width: 50%;
@@ -38,8 +32,7 @@
     }
 
     .web-links {
-      display: flex;
-      justify-content: space-between;
+      @include flex(space-between);
       width: 350px;
       margin-bottom: 3rem;
 
@@ -54,14 +47,13 @@
         }
         a {
           font-size: 1.4rem;
-          color: #3396a9;
+          color: $blue;
         }
       }
     }
 
     .redirect-links {
-      display: flex;
-      justify-content: space-between;
+      @include flex(space-between);
 
       width: 350px;
       text-align: center;
@@ -79,13 +71,12 @@
         display: block;
         margin-bottom: 1rem;
         text-transform: capitalize;
-        color: #3396a9;
+        color: $blue;
       }
     }
 
     .more-info {
       display: flex;
-
       color: white;
 
       @media (max-width: $mobile) {
@@ -120,10 +111,6 @@
       }
       .work-forus {
         text-align: center;
-
-        //   img {
-        //  width: 100px;
-        //   }
 
         h3 {
           margin: 1rem 0;
