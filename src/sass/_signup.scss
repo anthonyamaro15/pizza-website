@@ -1,7 +1,10 @@
 .SignUp {
   padding: 0rem 2rem 2rem;
-  margin: 4rem 0 7rem;
+  margin: 4rem auto 7rem;
   background: #fff;
+  max-width: 1350px;
+
+  box-shadow: 0px 5px 10px 2px rgba(217, 217, 217, 1);
 
   h1 {
     text-transform: uppercase;
@@ -11,6 +14,7 @@
     letter-spacing: 2px;
     font-size: 2.2rem;
     color: #aaa;
+    padding-top: 2rem;
   }
 
   form {

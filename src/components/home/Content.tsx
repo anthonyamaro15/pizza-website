@@ -1,6 +1,7 @@
 import React from "react";
 import SingleCardComponent from "./SingleCardComponent";
 import { useParams } from "react-router-dom";
+import sleeping from "../../imgs/sleeping.png";
 import {
   ItemInformationAdd,
   ItemInformation,
@@ -77,7 +78,7 @@ const Content: React.FC<Props> = ({
   // check what the params are. so we know which component to render.
 
   //   const deep_dish_p = mapThroughItems(deep_dish_pizza);
-  return cartData.length ? (
+  return !cartData.length ? (
     category === "pizzas" ? (
       <div className="Content">
         <div className="Content-inner">
@@ -300,7 +301,10 @@ const Content: React.FC<Props> = ({
       </div>
     )
   ) : (
-    <h2 className="loading">Please Wait Heroku is Waking Up</h2>
+    <div className="loading-wrapper">
+      <h2 className="loading">Please Wait Heroku is Waking Up</h2>
+      <img src={sleeping} alt="icon of app sleeping" />
+    </div>
   );
 };
 

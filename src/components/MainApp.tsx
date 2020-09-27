@@ -14,6 +14,7 @@ import MainAdmin from "./admin/MainAdmin";
 import OrderProgress from "./home/OrderProgress";
 import AdminDashboard from "./admin/AdminDashboard";
 import AdminSecondNavbar from "./admin/AdminSecondNavbar";
+import ResetPassword from "./home/ResetPassword";
 
 import MobileNavbars from "./home/homepage/mobileComponents/NavbarsMobile";
 
@@ -123,6 +124,17 @@ const MainApp = () => {
       </Route>
       <Route path="/reset_password" exact>
         <ForgotPassword />
+      </Route>
+
+      <Route exact path="/resetpassword/:token">
+        <SecondNavbar
+          openLoginModal={openLoginLModal}
+          closeLoginModal={closeLoginModal}
+          open={open}
+          cartData={cartData}
+          getItemsInCart={getItemsInCart}
+        />
+        <ResetPassword />
       </Route>
 
       <Route exact path="/admin">
