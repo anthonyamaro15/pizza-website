@@ -140,7 +140,10 @@
   }
 }
 
-.loading {
+.loading-wrapper {
   text-align: center;
-  margin: 15rem 0;
+  margin: 10rem 0;
+  .loading {
+    margin-bottom: 2rem;
+  }
 }
