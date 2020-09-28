@@ -73,7 +73,7 @@ const Footer = () => {
           </div>
           <div className="redirect-links">
             <div className="left-side">
-              <Link to="/">oder online</Link>
+              <Link to="/">order online</Link>
               <Link to="/">find your location</Link>
               <Link to="/">catering</Link>
               <Link to="/">baking & reheating</Link>
