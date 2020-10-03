@@ -14,6 +14,7 @@ import { IoIosArrowUp } from "react-icons/io";
 import io from "socket.io-client";
 
 const socket = io(`${process.env.REACT_APP_API_URL}`);
+// const socket = io(`http://localhost:4100/`);
 
 interface Props {
   getItemsInCart: () => void;
