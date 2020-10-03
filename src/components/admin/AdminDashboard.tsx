@@ -10,9 +10,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     socket.on("send-order", (order: never[]) => {
-      let newS = [...orders, ...order];
-      console.log("does this work?? ", newS);
-      setOrders([...orders, ...order]);
+      setOrders(order);
     });
   }, []);
 
