@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import io from "socket.io-client";
 
 const socket = io(`${process.env.REACT_APP_API_URL}`);
+// const socket = io(`http://localhost:4100/`);
 
 const OrderProgress = () => {
   const [status, setStatus] = useState("confirm");
@@ -13,19 +14,21 @@ const OrderProgress = () => {
   const { token } = useParams<{ token: string }>();
 
   useEffect(() => {
-    socket.on("send-status", (order: string) => {
-      if (order === "confirm_order") {
-        setOrderComfirm(order);
-        setStatus("");
-      } else if (order === "preparing") {
-        setOrderComfirm("");
-        setPreparing(order);
-      } else if (order === "out_for_delivery") {
-        setOutDelivery(order);
-        setPreparing("");
-      } else if (order === "complete") {
-        setCompleted(order);
-        setOutDelivery("");
+    socket.on("send-status", (order: any) => {
+      if (order.orderInformation.token === token) {
+        if (order.status === "confirm_order") {
+          setOrderComfirm(order.status);
+          setStatus("");
+        } else if (order.status === "preparing") {
+          setOrderComfirm("");
+          setPreparing(order.status);
+        } else if (order.status === "out_for_delivery") {
+          setOutDelivery(order.status);
+          setPreparing("");
+        } else if (order.status === "complete") {
+          setCompleted(order.status);
+          setOutDelivery("");
+        }
       }
     });
   }, []);
