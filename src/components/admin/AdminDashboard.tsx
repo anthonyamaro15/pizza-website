@@ -8,6 +8,7 @@ const socket = io(`${process.env.REACT_APP_API_URL}`);
 const AdminDashboard = () => {
   const [orders, setOrders] = useState([]);
 
+  // watch order
   useEffect(() => {
     socket.on("send-order", (order: never[]) => {
       setOrders(order);
