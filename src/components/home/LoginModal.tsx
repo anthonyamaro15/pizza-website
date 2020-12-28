@@ -5,6 +5,7 @@ import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { serverUrl } from '../../envVariables';
 
 interface Props {
   open: boolean;
@@ -40,7 +41,7 @@ const LoginModal: React.FC<Props> = ({
 
   const onSubmit = (values: InputValues) => {
     axios
-      .post(`${process.env.REACT_APP_API_URL}/api/login`, values)
+      .post(`${serverUrl}/api/login`, values)
       .then((res) => {
         localStorage.setItem("client_token", JSON.stringify(res.data.token));
         localStorage.setItem("id", JSON.stringify(res.data.id));

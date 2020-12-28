@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { serverUrl } from '../../envVariables';
 
 interface InputValues {
   first_name: string;
@@ -20,7 +21,7 @@ const SignUp: React.FC<Props> = ({ openLoginModal }) => {
   const { register, handleSubmit, reset } = useForm<InputValues>();
   const history = useHistory();
 
-  const onSubmit = (values: InputValues) => {
+  const onSubmit = async (values: InputValues) => {
     const {
       first_name,
       last_name,
@@ -37,17 +38,15 @@ const SignUp: React.FC<Props> = ({ openLoginModal }) => {
       address,
       password,
     };
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/api/register`, saveData)
-      .then((res) => {
-        console.log("response ", res.data);
-        history.push("/pizzas");
-        openLoginModal();
-        reset();
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
+    try {
+      await axios.post(`${serverUrl}/api/register`, saveData)
+      history.push("/pizzas");
+      openLoginModal();
+      reset();
+    } catch (error) {
+       console.log(error.response.data);
+    }
+
   };
   return (
     <div className="SignUp">
