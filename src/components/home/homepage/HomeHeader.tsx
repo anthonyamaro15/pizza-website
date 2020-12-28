@@ -13,7 +13,7 @@ const HomeHeader = () => {
       <header>
         <div className="title">
           <span>- legendary -</span>
-          <h1>chigago deep dish</h1>
+          <h1>chicago deep dish</h1>
           <div className="btn-container">
             <button type="submit" className="btn" onClick={redirect}>
               start my order now!

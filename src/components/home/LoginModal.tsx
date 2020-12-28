@@ -111,6 +111,7 @@ const LoginModal: React.FC<Props> = ({
               <label htmlFor="login_password">
                 password
                 <input
+                  data-testid="password"
                   type="password"
                   name="password"
                   id="login_password"

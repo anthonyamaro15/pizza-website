@@ -92,12 +92,13 @@ const SignUp: React.FC<Props> = ({ openLoginModal }) => {
         <div className="share-clss">
           <label htmlFor="password">
             password
-            <input type="text" name="password" id="password" ref={register} />
+            <input data-testid="signup_password" type="text" name="password" id="password" ref={register} />
           </label>
           <label htmlFor="pass_comfirmation">
             password comfirmation
             <input
               type="text"
+              data-testid="pass_comfirmation"
               name="pass_comfirmation"
               id="pass_comfirmation"
               ref={register}
