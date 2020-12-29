@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
@@ -11,14 +11,21 @@ interface User {
 
 interface Props {
   user: User[];
+  openDeliveryModal: () => void;
+  closeDeliveryModal: () => void;
+  open: boolean;
 }
 
-const DeliveryModal: React.FC<Props> = ({ user }) => {
-  const [open, setOpen] = useState(false);
+const DeliveryModal: React.FC<Props> = ({ 
+   user,
+    open, 
+   openDeliveryModal, 
+   closeDeliveryModal 
+}) => {
 
   return (
     <>
-      <button className="delivery" onClick={() => setOpen(true)}>
+      <button className="delivery" onClick={openDeliveryModal}>
         Delivery
         <span className="inner-btn">
           {user.length && user[0].address.length > 15
@@ -26,7 +33,7 @@ const DeliveryModal: React.FC<Props> = ({ user }) => {
             : "No address"}
         </span>
       </button>
-      <Modal open={open} onClose={() => setOpen(false)}>
+      <Modal open={open} onClose={closeDeliveryModal}>
         <div className="DeliveryModal">
           <h3>delivered to</h3>
           <p>{user.length ? user[0].address : "No address"}</p>

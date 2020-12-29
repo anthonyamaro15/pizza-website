@@ -10,25 +10,32 @@ import { BsArrowRightShort } from "react-icons/bs";
 import axios from "axios";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
+import { serverUrl } from '../../envVariables';
 
 import io from "socket.io-client";
 
-const socket = io(`${process.env.REACT_APP_API_URL}`);
+const socket = io(`${serverUrl}`);
 // const socket = io(`http://localhost:4100/`);
 
 interface Props {
-  getItemsInCart: () => void;
-  cartData: ItemInformation[];
-  user: User[];
+   open: boolean,
+   openCheckoutCartModal: () => void;
+   closeCheckoutCartModal: () => void;
+   getItemsInCart: () => void;
+   cartData: ItemInformation[];
+   user: User[];
 }
 
 const CheckoutCartModal: React.FC<Props> = ({
-  getItemsInCart,
-  cartData,
-  user,
+   open,
+   openCheckoutCartModal,
+   closeCheckoutCartModal,
+   getItemsInCart,
+   cartData,
+   user,
 }) => {
   const [mealOptions, setMealOptions] = useState([]);
-  const [open, setOpen] = React.useState(false);
+//   const [open, setOpen] = React.useState(false);
   let [total, setTotal] = useState(0);
   let [subTo, setSubTo] = useState(0);
 
@@ -41,14 +48,15 @@ const CheckoutCartModal: React.FC<Props> = ({
   }, []);
 
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/api/cart/complete_meal`)
-      .then((res) => {
-        setMealOptions(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+     const completeMeal = async () => {
+        try {
+           const response = await axios.get(`${serverUrl}/api/cart/complete_meal`);
+           setMealOptions(response.data);
+        } catch (error) {
+           console.log(error.response);
+        }
+     }
+     completeMeal();
   }, []);
 
   useEffect(() => {
@@ -60,30 +68,24 @@ const CheckoutCartModal: React.FC<Props> = ({
     setTotal(sumValues);
   }, [cartData]);
 
-  const removeFromCart = (item: ItemInformation) => {
-    axios
-      .delete(`${process.env.REACT_APP_API_URL}/api/cart/remove/${item.id}`)
-      .then(() => {
+  const removeFromCart = async (item: ItemInformation) => {
+     try {
+        await axios.delete(`${serverUrl}/api/cart/remove/${item.id}`);
         setSubTo(total - item.price);
         getItemsInCart();
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+     } catch (error) {
+        console.log(error.response);
+     }
   };
 
-  const toggleCartItems = (item: ItemInformation, type: string) => {
-    axios
-      .patch(
-        `${process.env.REACT_APP_API_URL}/api/cart/update_item_in_cart/${user[0].id}/${item.id}`,
-        { quantity: type === "plus" ? item.quantity + 1 : item.quantity - 1 }
-      )
-      .then(() => {
+  const toggleCartItems = async (item: ItemInformation, type: string) => {
+     try {
+        await axios.patch(`${serverUrl}/api/cart/update_item_in_cart/${user[0].id}/${item.id}`,
+        { quantity: type === "plus" ? item.quantity + 1 : item.quantity - 1 });
         getItemsInCart();
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+     } catch (error) {
+        console.log(error.response);
+     }
   };
 
   const AddByOne = (item: ItemInformation) => {
@@ -98,10 +100,10 @@ const CheckoutCartModal: React.FC<Props> = ({
     }
   };
 
-  const placeOrder = () => {
+  const placeOrder = async () => {
     let token = uuidv4();
     history.push(`/order/${token}`);
-    setOpen(false);
+    closeCheckoutCartModal();
 
     socket.emit("order", {
       cartData,
@@ -110,23 +112,19 @@ const CheckoutCartModal: React.FC<Props> = ({
       createdAt: new Date().toLocaleTimeString(),
     });
 
-    axios
-      .delete(
-        `${process.env.REACT_APP_API_URL}/api/cart/remove_cart_items/${user[0].id}`
-      )
-      .then(() => {
-        getItemsInCart();
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
+    try {
+       await axios.delete(`${serverUrl}/api/cart/remove_cart_items/${user[0].id}`);
+       getItemsInCart();
+    } catch (error) {
+       console.log(error.response);
+    }
   };
 
   let tax = (8.25 * total) / 100;
   let totalAmount = tax + total + 4;
   return (
     <>
-      <button className="checkout" onClick={() => setOpen(true)}>
+      <button className="checkout" onClick={openCheckoutCartModal}>
         checkout{" "}
         <span className="cart">
           <ImCart />
@@ -135,7 +133,7 @@ const CheckoutCartModal: React.FC<Props> = ({
           subTo ? subTo.toFixed(2) : total.toFixed(2)
         })`}</span>
       </button>
-      <Modal open={open} onClose={() => setOpen(false)}>
+      <Modal open={open} onClose={closeCheckoutCartModal}>
         <div className="modal-wrapper">
           {cartData.length ? (
             <div className="madal-wrapper-inner">

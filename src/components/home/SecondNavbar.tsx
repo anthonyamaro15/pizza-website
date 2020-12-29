@@ -6,6 +6,7 @@ import CheckoutCartModal from "./CheckoutCartModal";
 import LoginModal from "./LoginModal";
 import DeliveryModal from "./DeliveryModal";
 import axios from "axios";
+import { serverUrl } from '../../envVariables';
 
 interface Props {
   open: boolean;
@@ -24,6 +25,9 @@ const SecondNavbar: React.FC<Props> = ({
 }) => {
   const [id, setId] = useState<SetStateAction<string> | null>("");
   const [user, setUser] = useState<User[]>([]);
+  const [openDMOdal, setOpenDModal] = useState(false);
+  const [openCheckoutModal, setOpenCheckoutModal] = useState(false);
+  
 
   useEffect(() => {
     const userId = localStorage.getItem("id");
@@ -39,16 +43,31 @@ const SecondNavbar: React.FC<Props> = ({
     }
   }, [id]);
 
-  function getUserData() {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/api/cart/user/${id}`)
-      .then((res) => {
-        setUser(res.data);
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+  async function getUserData() {
+     try {
+        const response = await axios.get(`${serverUrl}/api/cart/user/${id}`);
+        setUser(response.data);
+     } catch (error) {
+        console.log(error.response);
+     }
   }
+
+  const openDeliveryModal = () => {
+   setOpenDModal(true);
+  }
+
+  const closeDeliveryModal = () => {
+     setOpenDModal(false);
+  }
+
+  const openCheckoutCartModal = () => {
+     setOpenCheckoutModal(true);
+  }
+
+  const closeCheckoutCartModal = () => {
+     setOpenCheckoutModal(false);
+  }
+
   return (
     <div className="SecondNavbar">
       <div className="Navbar-wrapper">
@@ -57,7 +76,12 @@ const SecondNavbar: React.FC<Props> = ({
         </Link>
         <nav>
           <div className="btn-delivery btns">
-            <DeliveryModal user={user} />
+            <DeliveryModal 
+               user={user}
+               open={openDMOdal}
+               openDeliveryModal={openDeliveryModal}
+               closeDeliveryModal={closeDeliveryModal}
+            />
           </div>
           <div className="btn-login btns">
             <LoginModal
@@ -69,6 +93,9 @@ const SecondNavbar: React.FC<Props> = ({
           </div>
           <div className="btn-checkout btns">
             <CheckoutCartModal
+              open={openCheckoutModal}
+              openCheckoutCartModal={openCheckoutCartModal}
+              closeCheckoutCartModal={closeCheckoutCartModal}
               getItemsInCart={getItemsInCart}
               cartData={cartData}
               user={user}
