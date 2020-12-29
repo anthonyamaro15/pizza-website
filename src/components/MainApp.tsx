@@ -67,6 +67,7 @@ const MainApp = () => {
   const closeLoginModal = () => {
     setOpen(false);
   };
+  
   return (
     <div>
       <FirstNavbar />

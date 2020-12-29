@@ -47,6 +47,8 @@ const NavbarsMobile: React.FC<Props> = ({
 }) => {
   const [id, setId] = useState<SetStateAction<string> | null>("");
   const [user, setUser] = useState<User[]>([]);
+  const [openCheckoutModal, setOpenCheckoutModal] = useState(false);
+
 
   useEffect(() => {
     const userId = localStorage.getItem("id");
@@ -72,6 +74,15 @@ const NavbarsMobile: React.FC<Props> = ({
         console.log(err.response);
       });
   }
+
+    const openCheckoutCartModal = () => {
+     setOpenCheckoutModal(true);
+  }
+
+  const closeCheckoutCartModal = () => {
+     setOpenCheckoutModal(false);
+  }
+
   return (
     <div className="MobileNavbars">
       <div className="Navbar-wrapper">
@@ -86,6 +97,9 @@ const NavbarsMobile: React.FC<Props> = ({
           </div>
           <div className="btn-checkout btns">
             <CheckoutCartModal
+              open={openCheckoutModal}
+              openCheckoutCartModal={openCheckoutCartModal}
+              closeCheckoutCartModal={closeCheckoutCartModal}
               getItemsInCart={getItemsInCart}
               cartData={cartData}
               user={user}
