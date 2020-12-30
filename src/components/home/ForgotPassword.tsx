@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { serverUrl } from '../../envVariables';
 import axios from "axios";
 
 interface InputValues {
@@ -8,22 +9,20 @@ interface InputValues {
 const ForgotPassword = () => {
   const { register, handleSubmit, reset } = useForm<InputValues>();
 
-  const onSubmit = (values: InputValues) => {
-    console.log(values);
-    axios
-      .patch(`${process.env.REACT_APP_API_URL}/api/forgotpassword`, values)
-      .then(() => {
+  const onSubmit = async (values: InputValues) => {
+     try {
+        await axios.patch(`${serverUrl}/api/forgotpassword`, values);
         reset();
         setTimeout(
           () => alert("We sent you an email to reset your password!"),
           600
         );
-      })
-      .catch((err) => {
-        console.log(err.response.data.errorMessage);
-        alert(err.response.data.errorMessage);
-      });
+     } catch (error) {
+        console.log(error.response.data.errorMessage);
+        alert(error.response.data.errorMessage);
+     }
   };
+  
   return (
     <div className="SignUp">
       <h1>password reset</h1>
