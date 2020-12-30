@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useParams, useHistory } from "react-router-dom";
+import { serverUrl} from '../../envVariables'; 
 import axios from "axios";
 
 interface InputValues {
@@ -18,7 +19,7 @@ const ResetPassword = () => {
 
     if (password === confirm_password) {
       axios
-        .patch(`${process.env.REACT_APP_API_URL}/api/resetpassword/${token}`, {
+        .patch(`${serverUrl}/api/resetpassword/${token}`, {
           password,
         })
         .then((res) => {
@@ -41,6 +42,7 @@ const ResetPassword = () => {
         <label htmlFor="reset_password">
           password
           <input
+            data-testid="reset_password"
             type="password"
             name="password"
             id="reset_password"
@@ -50,6 +52,7 @@ const ResetPassword = () => {
         <label htmlFor="confirm_password">
           confirm password
           <input
+            data-testid="confirm_password"
             type="password"
             name="confirm_password"
             id="confirm_password"
