@@ -5,6 +5,6 @@ interface NewPassword {
    password: string;
 }
 
-export const resetPassswordRequest = async (password: NewPassword, token: string) => {
-   return await axios.patch(`${serverUrl}/api/resetpassword/${token}`, password);
+export const resetPassswordRequest = async (password: NewPassword) => {
+   return await axios.patch(`${serverUrl}/api/resetpassword`, password);
 }

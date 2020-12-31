@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ItemInformation, User } from "../../interfaces/ShareInterfaces";
 import { useForm } from "react-hook-form";
 import { BsArrowRightShort } from "react-icons/bs";
+import { serverUrl } from '../../envVariables';
 import axios from "axios";
 
 interface Inputs {
@@ -31,7 +32,7 @@ const SingleCardComponent: React.FC<Props> = ({
     setPrices(meal.size_price.split(","));
   }, [meal]);
 
-  const onSubmit = (values: Inputs) => {
+  const onSubmit = async (values: Inputs) => {
     setLoading(true);
     let price = Number(values.size.split("$")[1]);
     let quantity = Number(values.quantity);
@@ -48,30 +49,47 @@ const SingleCardComponent: React.FC<Props> = ({
 
     if (alreadyInCart.length) {
       let quantity = (alreadyInCart[0].quantity += Number(values.quantity));
-      axios
-        .patch(
-          `${process.env.REACT_APP_API_URL}/api/cart/update_item_in_cart/${user[0].id}/${userOrder.id}`,
-          { quantity }
-        )
-        .then(() => {
-          getItemsInCart();
-          setOrder(false);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.log(err.response);
-        });
+      try {
+         await axios
+            .patch(`${serverUrl}/api/cart/update_item_in_cart/${user[0].id}/${userOrder.id}`,{ quantity });
+         getItemsInCart();
+         setOrder(false);
+         setLoading(false);
+      } catch (error) {
+         console.log(error.response);
+      }
+      // axios
+      //   .patch(
+      //     `${serverUrl}/api/cart/update_item_in_cart/${user[0].id}/${userOrder.id}`,
+      //     { quantity }
+      //   )
+      //   .then(() => {
+      //     getItemsInCart();
+      //     setOrder(false);
+      //     setLoading(false);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err.response);
+      //   });
     } else {
-      axios
-        .post(`${process.env.REACT_APP_API_URL}/api/cart/add`, userOrder)
-        .then(() => {
+       try {
+          await axios.post(`${serverUrl}/api/cart/add`, userOrder);
           getItemsInCart();
           setOrder(false);
           setLoading(false);
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-        });
+       } catch (error) {
+          console.log(error.response.data);
+       }
+      // axios
+      //   .post(`${serverUrl}/api/cart/add`, userOrder)
+      //   .then(() => {
+      //     getItemsInCart();
+      //     setOrder(false);
+      //     setLoading(false);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err.response.data);
+      //   });
     }
   };
 

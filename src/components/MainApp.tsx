@@ -17,6 +17,7 @@ import AdminSecondNavbar from "./admin/AdminSecondNavbar";
 import ResetPassword from "./home/ResetPassword";
 
 import MobileNavbars from "./home/homepage/mobileComponents/NavbarsMobile";
+import { serverUrl } from '../envVariables';
 
 const MainApp = () => {
   const [open, setOpen] = useState(false);
@@ -33,14 +34,15 @@ const MainApp = () => {
   }, []);
 
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/api/menu/get_menu`)
-      .then((res) => {
-        setMenu(res.data);
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+     async function getMenu() {
+        try {
+           const response = await axios.get(`${serverUrl}/api/menu/get_menu`);
+           setMenu(response.data);
+        } catch (error) {
+          console.log(error.response.data); 
+        }
+     }
+     getMenu();
   }, []);
 
   useEffect(() => {
@@ -49,15 +51,13 @@ const MainApp = () => {
     }
   }, [id]);
 
-  function getItemsInCart() {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/api/cart/items_in_cart/${id}`)
-      .then((res) => {
-        setCartData(res.data);
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
+  async function getItemsInCart() {
+     try {
+      const response = await axios.get(`${serverUrl}/api/cart/items_in_cart/${id}`);
+      setCartData(response.data);
+     } catch (error) {
+       console.log(error.response.data); 
+     }
   }
 
   const openLoginLModal = () => {

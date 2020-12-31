@@ -56,6 +56,7 @@ const LoginModal: React.FC<Props> = ({
       })
       .catch((err) => {
         console.log(err.response.data);
+        alert(err.response.data.errorMessage);
       });
   };
 
