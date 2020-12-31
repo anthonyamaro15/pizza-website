@@ -58,19 +58,6 @@ const SingleCardComponent: React.FC<Props> = ({
       } catch (error) {
          console.log(error.response);
       }
-      // axios
-      //   .patch(
-      //     `${serverUrl}/api/cart/update_item_in_cart/${user[0].id}/${userOrder.id}`,
-      //     { quantity }
-      //   )
-      //   .then(() => {
-      //     getItemsInCart();
-      //     setOrder(false);
-      //     setLoading(false);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err.response);
-      //   });
     } else {
        try {
           await axios.post(`${serverUrl}/api/cart/add`, userOrder);
@@ -80,16 +67,6 @@ const SingleCardComponent: React.FC<Props> = ({
        } catch (error) {
           console.log(error.response.data);
        }
-      // axios
-      //   .post(`${serverUrl}/api/cart/add`, userOrder)
-      //   .then(() => {
-      //     getItemsInCart();
-      //     setOrder(false);
-      //     setLoading(false);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err.response.data);
-      //   });
     }
   };
 
