@@ -4,6 +4,7 @@ import { SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import { BsArrowRightShort } from "react-icons/bs";
 import axios from "axios";
+import { serverUrl } from '../../envVariables';
 
 interface Inputs {
   size: string;
@@ -56,7 +57,7 @@ const SingleCardComponent: React.FC<Props> = ({
     }
   }, []);
 
-  const onSubmit = (values: Inputs) => {
+  const onSubmit = async (values: Inputs) => {
     setLoading(true);
     let price = Number(values.size.split("$")[1]);
     let quantity = Number(values.quantity);
@@ -73,31 +74,23 @@ const SingleCardComponent: React.FC<Props> = ({
 
     if (alreadyInCart.length) {
       let quantity = (alreadyInCart[0].quantity += Number(values.quantity));
-      console.log("what is quantity?? ", quantity);
-      axios
-        .patch(
-          `${process.env.REACT_APP_API_URL}/api/cart/update_item_in_cart/${id}/${userOrder.id}`,
-          { quantity }
-        )
-        .then(() => {
-          getItemsInCart();
-          setOrder(false);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.log(err.response);
-        });
+      try {
+         await axios.patch(`${serverUrl}/api/cart/update_item_in_cart/${id}/${userOrder.id}`,{ quantity });
+         getItemsInCart();
+         setOrder(false);
+         setLoading(false);
+      } catch (error) {
+         console.log(error.response.data);
+      }
     } else {
-      axios
-        .post(`${process.env.REACT_APP_API_URL}/api/cart/add`, userOrder)
-        .then(() => {
+       try {
+          await axios.post(`${serverUrl}/api/cart/add`, userOrder);
           getItemsInCart();
           setOrder(false);
           setLoading(false);
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-        });
+       } catch (error) {
+          console.log(error.response.data);
+       }
     }
   };
 

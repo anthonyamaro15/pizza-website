@@ -45,6 +45,7 @@ const SignUp: React.FC<Props> = ({ openLoginModal }) => {
       reset();
     } catch (error) {
        console.log(error.response.data);
+       alert(error.response.data.errorMessage);
     }
 
   };
